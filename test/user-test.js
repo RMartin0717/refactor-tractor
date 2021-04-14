@@ -142,7 +142,8 @@ describe('User', () => {
           }
         ],
         "tags": [
-          "sauce"
+          "sauce",
+          "starter"
         ]
       },
     ]
@@ -189,22 +190,24 @@ describe('User', () => {
   it('Should be able to filter through favoriteRecipes by tag', () => {
     user1.addToFavorites(recipeData[0]);
     user1.addToFavorites(recipeData[1]);
-    expect(user1.filterFavorites('antipasti')).to.eql([recipeData[0]]);
+    user1.addToFavorites(recipeData[2]);
+    const searchByTag = user1.searchFavoritesByTag(["starter"]);
+    expect(searchByTag).to.deep.equal([recipeData[0], recipeData[2]]);
   });
   it('Should be able to filter through favoriteRecipes by more than one tag', () => {
-
+    user1.addToFavorites(recipeData[0]);
+    user1.addToFavorites(recipeData[1]);
+    user1.addToFavorites(recipeData[2]);
+    const searchByTag = user1.searchFavoritesByTag(["snack", "dinner"]);
+    expect(searchByTag).to.deep.equal([recipeData[0], recipeData[1]]);
   });
   it('Should be able to search favoriteRecipes by name or ingredient', () => {
     user1.addToFavorites(recipeData[0]);
     user1.addToFavorites(recipeData[1]);
-    expect(user1.findFavorites('egg')).to.eql([recipeData[0]]);
-  });
-
-  it('Should be able to check ingredients in User/s pantry for a given recipe', () => {
-    expect(user1.checkPantry(recipeIngredients)).to.eql('You have the ingredients!');
-  });
-
-  it('Should inform User if they lack required ingredients for a given recipe', () => {
-    expect(user1.checkPantry(recipeIngredients)).to.eql(missingIngredientsWithPrice);
+    user1.addToFavorites(recipeData[2]);
+    const searchByIng = user1.searchFavoritesByNameOrIng("brown sugar");
+    expect(searchByIng).to.deep.equal([recipeData[2]]);
+    const searchByName = user1.searchFavoritesByNameOrIng("Pudding");
+    expect(searchByName).to.deep.equal([recipeData[0]]);
   });
 });

@@ -24,6 +24,20 @@ class Pantry {
       return ingredientList;
     })
   }
+
+  removeStockFromPantry(recipe) {
+    this.contents.forEach(item => {
+      recipe.ingredients.forEach((ingredient => {
+        if (item.ingredient === ingredient.id) {
+          item.amount -= ingredient.quantity.amount
+        }
+      }))
+    });
+    this.contents = this.contents.filter((item) => {
+      return item.amount > 0;
+    })
+  }
 }
+
 
 export default Pantry;

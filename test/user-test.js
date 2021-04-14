@@ -1,11 +1,10 @@
 import { expect } from 'chai';
 
 import User from '../src/user.js';
-import recipeData from '../src/data/recipes.js'
 
-let user1
 
 describe('User', () => {
+  let user1
   beforeEach(() => {
     user1 = new User(1, 'Boba', [
       {
@@ -21,6 +20,7 @@ describe('User', () => {
         'amount': 3
       }]
     );
+    //need dummy data for recipes
   });
 
   it('Should have a property of favoriteRecipes with a default value', () => {

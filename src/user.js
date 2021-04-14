@@ -4,8 +4,9 @@ class User {
     this.name = name;
     this.pantry = pantry;
     this.favoriteRecipes = [];
-
+    this.recipesToCook = [];
   }
+
 
   addToFavorites(recipe) {
     if (!this.favoriteRecipes.includes(recipe)) {
@@ -18,20 +19,27 @@ class User {
     this.favoriteRecipes.splice(i, 1)
   }
 
-  filterFavorites(tag) {
-    return this.favoriteRecipes.filter(recipe => {
-      return recipe.tags.includes(tag);
-    });
+  addToRecipesToCook(recipe) {
+    this.recipesToCook.push(recipe);
   }
 
-  findFavorites(strgToSrch) {
-    return this.favoriteRecipes.filter(recipe => {
-      return recipe.name.includes(strgToSrch)
-      || recipe.ingredients.find(ingredient => {
-        return ingredient.name.includes(strgToSrch)
-      });
-    });
+  searchFavoritesByTag(searchTags) {
+    //need to be able to filter by one OR MORE tags
+    //pass in an array for the tag??
+    //use a reduce and filter to check each tag and then concatonate the arrays
+    const searchReslts = searchTags.reduce((acc, tag) => {
+      const checkTag = this.favoriteRecipes.filter(recipe => recipe.tags.includes(tag));
+      return acc.concat(checkTag)
+    }, []);
+    return searchResults
   }
+
+  searchFavoritesByNameOrIng(searchWord) {
+    const searchResults = this.favoriteRecipes.filter(recipe => {
+      return recipe.name.includes(searchWord) || ingredient.name.includes(searchWord)
+      });
+    return searchResults
+  };
 }
 
 

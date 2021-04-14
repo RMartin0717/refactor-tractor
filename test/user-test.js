@@ -148,27 +148,52 @@ describe('User', () => {
     ]
     //need to put dummy data in separate file
   });
-
-  it('Should have a property of favoriteRecipes with a default value', () => {
+  it("Should store a user's id and name", () => {
+    expect(user1.id).to.equal(1);
+    expect(user1.name).to.equal("Boba");
+  });
+  it("Should store the contents of a user's pantry", () => {
+    expect(user1.pantry).to.deep.equal([
+      {
+        'ingredient': 1077,
+        'amount': 1
+      },
+      {
+        'ingredient': 14412,
+        'amount': 1
+      },
+      {
+        'ingredient': 1009054,
+        'amount': 3
+      }
+    ]);
+  });
+  it('Should have a property of favoriteRecipes with a default value of an empty array', () => {
     expect(user1.favoriteRecipes).to.deep.equal([]);
   });
-
+  it('Should have a property of recipesToCook with a default value of an empty array', () => {
+    expect(user1.recipesToCook).to.deep.equal([]);
+  });
   it('Should be able to add recipes to favoriteRecipes', () =>{
-    user1.addToFavorites(recipeData[0])
-    expect(user1.favoriteRecipes.includes(recipeData[0])).to.eql(true);
+    user1.addToFavorites(recipeData[0]);
+    expect(user1.favoriteRecipes.includes(recipeData[0])).to.equal(true);
   });
-
   it('Should be able to remove recipes from favoriteRecipes', () =>{
-    user1.removeFromFavorites(recipeData);
-    expect(user1.favoriteRecipes).to.eql([]);
+    user1.removeFromFavorites(recipeData[0]);
+    expect(user1.favoriteRecipes).to.deep.equal([]);
   });
-
+  it("Should add a recipe to a list of recipes to cook", () => {
+    user1.addToRecipesToCook(recipeData[1]);
+    expect(user1.recipesToCook).to.deep.equal([recipeData[1]]);
+  });
   it('Should be able to filter through favoriteRecipes by tag', () => {
     user1.addToFavorites(recipeData[0]);
     user1.addToFavorites(recipeData[1]);
     expect(user1.filterFavorites('antipasti')).to.eql([recipeData[0]]);
   });
+  it('Should be able to filter through favoriteRecipes by more than one tag', () => {
 
+  });
   it('Should be able to search favoriteRecipes by name or ingredient', () => {
     user1.addToFavorites(recipeData[0]);
     user1.addToFavorites(recipeData[1]);

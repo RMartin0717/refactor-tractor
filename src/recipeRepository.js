@@ -1,4 +1,4 @@
-class Cookbook {
+class RecipeRepository {
   constructor(data) {
     this.recipes = data;
   }
@@ -13,4 +13,4 @@ class Cookbook {
   }
 }
 
-export default Cookbook;
+export default RecipeRepository;

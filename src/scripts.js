@@ -2,18 +2,18 @@ import './css/base.scss';
 import './css/styles.scss';
 
 import recipeData from './data/recipes';
-import ingredientData from './data/ingredients';
+import ingredientsData from './data/ingredients';
 import users from './data/users';
 
 import Pantry from './pantry';
 import Recipe from './recipe';
 import User from './user';
-import Cookbook from './cookbook';
+import RecipeRepository from './recipeRepository';
 
 let favButton = document.querySelector('.view-favorites');
 let homeButton = document.querySelector('.home')
 let cardArea = document.querySelector('.all-cards');
-let cookbook = new Cookbook(recipeData);
+let recipeRepository = new RecipeRepository(recipeData);
 let user, pantry;
 
 window.onload = onStartup();
@@ -29,7 +29,7 @@ function onStartup() {
   });
   user = new User(userId, newUser.name, newUser.pantry)
   pantry = new Pantry(newUser.pantry)
-  populateCards(cookbook.recipes);
+  populateCards(recipeRepository.recipes);
   greetUser();
 }
 
@@ -39,7 +39,7 @@ function viewFavorites() {
   }
   if (!user.favoriteRecipes.length) {
     favButton.innerHTML = 'You have no favorites!';
-    populateCards(cookbook.recipes);
+    populateCards(recipeRepository.recipes);
     return
   } else {
     favButton.innerHTML = 'Refresh Favorites'
@@ -72,7 +72,7 @@ function greetUser() {
 }
 
 function favoriteCard(event) {
-  let specificRecipe = cookbook.recipes.find(recipe => {
+  let specificRecipe = recipeRepository.recipes.find(recipe => {
     if (recipe.id  === Number(event.target.id)) {
       return recipe;
     }
@@ -94,18 +94,18 @@ function cardButtonConditionals(event) {
     displayDirections(event);
   } else if (event.target.classList.contains('home')) {
     favButton.innerHTML = 'View Favorites';
-    populateCards(cookbook.recipes);
+    populateCards(recipeRepository.recipes);
   }
 }
 
 
 function displayDirections(event) {
-  let newRecipeInfo = cookbook.recipes.find(recipe => {
+  let newRecipeInfo = recipeRepository.recipes.find(recipe => {
     if (recipe.id === Number(event.target.id)) {
       return recipe;
     }
   })
-  let recipeObject = new Recipe(newRecipeInfo, ingredientsData);
+  let recipeObject = new Recipe(newRecipeInfo);
   let cost = recipeObject.calculateCost()
   let costInDollars = (cost / 100).toFixed(2)
   cardArea.classList.add('all');

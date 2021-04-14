@@ -2,26 +2,26 @@ import {expect} from 'chai';
 
 
 import recipeData from '../src/data/recipes';
-import Cookbook from '../src/cookbook';
+import RecipeRepository from '../src/recipeRepository';
 
-let cookbook;
+let recipeRepository;
 
 describe('User', () => {
   beforeEach(() => {
-    cookbook = new Cookbook(recipeData);
+    recipeRepository = new RecipeRepository(recipeData);
   });
 
   it('Should have an array of all recipes', () => {
-    expect(cookbook.recipes).to.be.an('array');
+    expect(recipeRepository.recipes).to.be.an('array');
   });
 
   describe('findRecipe', () => {
     it('Should be able to filter through its array by ingredients', () => {
-      expect(cookbook.findRecipe('yolk').length).to.equal(2);
+      expect(recipeRepository.findRecipe('yolk').length).to.equal(2);
     });
 
     it('Should be able to filter through its array by name', () => {
-      expect(cookbook.findRecipe('Sesame Cookies').length).to.equal(1);
+      expect(recipeRepository.findRecipe('Sesame Cookies').length).to.equal(1);
     });
   });
 })

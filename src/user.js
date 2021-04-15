@@ -32,10 +32,6 @@ class User {
   }
 
   searchFavoritesByNameOrIng(searchWord) {
-    // const searchResults = this.favoriteRecipes.filter(recipe => {
-    //   return recipe.name.includes(searchWord) || ingredient.name.includes(searchWord)
-    //   });
-    // return searchResults
     return this.favoriteRecipes.filter(recipe => {
       return recipe.name.includes(searchWord)
       || recipe.ingredients.find(ingredient => {

@@ -25,20 +25,6 @@ class RecipeRepository {
     }, [])
     return searchResults;
   }
-
- 
-   
-  
-    // console.log(filteredRecipes);
-    // return filteredRecipes;
-  
-    // const filteredRecipes = this.recipes.filter(recipe => {
-    //   return recipe.ingredients.find(ingredient => {
-    //     return (ingredient.name.includes(searchText)) ||
-    //     (recipe.name.includes(searchText))
-    //   });
-    // })
-    // console.log(filteredRecipes);
-  }
+}
 
 export default RecipeRepository;

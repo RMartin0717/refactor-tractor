@@ -1,8 +1,11 @@
 import ingredientsData from "./data/ingredients";
+import Recipe from "./recipe";
+// let recipe = new Recipe(recipe, ingredientsData)
 
 class Pantry {
-  constructor(userIngredients) {
+  constructor(userIngredients, ingredientsData) {
     this.contents = userIngredients;
+    this.ingredientsData = ingredientsData;
   }
 
   getPantryStock() {
@@ -36,6 +39,30 @@ class Pantry {
     this.contents = this.contents.filter((item) => {
       return item.amount > 0;
     })
+  }
+
+  checkPantryForRequiredIngredients(recipe) {
+    let requiredIngredient = recipe.ingredients
+    let ingredientsAvailable = {
+      canCook: true,
+      missingIngredients: []
+    };
+    requiredIngredient.forEach(ingredient => {
+      let matchingPantryItem = this.contents.reduce((stock, pantryItem) => {
+        const idMatch = this.contents.find(pantryItem => pantryItem.ingredient === ingredient.id)
+        if (idMatch === undefined) {
+          ingredientsAvailable.canCook = false;
+          return {"ingredient": ingredient.id, "amount": ingredient.quantity.amount}
+        } else if (idMatch.amount < ingredient.quantity.amount) {
+          ingredientsAvailable.canCook = false;
+          return {"ingredient": ingredient.id, "amount": (ingredient.quantity.amount - idMatch.amount)}
+        } else {
+          return idMatch;
+        }
+      }, []);
+      ingredientsAvailable.missingIngredients.push(matchingPantryItem)
+    });
+    return ingredientsAvailable;
   }
 }
 

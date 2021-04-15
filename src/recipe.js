@@ -20,7 +20,7 @@ class Recipe {
       });
     });
     return ingredientNames;
-  };
+  }
 
   calculateCost() {
     let costCounter = 0;
@@ -38,8 +38,8 @@ class Recipe {
     const instructionList = this.instructions.map(instruction => instruction.instruction);
 
     return instructionList;
-  };
-};
+  }
+}
 
 
 export default Recipe;

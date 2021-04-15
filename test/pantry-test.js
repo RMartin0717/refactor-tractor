@@ -15,9 +15,9 @@ describe('Pantry', () => {
   beforeEach(() => {
     pantry1 = new Pantry(pantryTestingData[0].pantry);
     pantry2 = new Pantry(pantryTestingData[1].pantry);
-    recipe1 = new Recipe(recipeTestingData[0].id, recipeTestingData[0].image, recipeTestingData[0].ingredients, recipeTestingData[0].instructions, recipeTestingData[0].name, recipeTestingData[0].tags)
-    recipe2 = new Recipe(recipeTestingData[1].id, recipeTestingData[1].image, recipeTestingData[1].ingredients, recipeTestingData[1].instructions, recipeTestingData[1].name, recipeTestingData[1].tags)
-    recipe3 = new Recipe(recipeTestingData[2].id, recipeTestingData[2].image, recipeTestingData[2].ingredients, recipeTestingData[2].instructions, recipeTestingData[2].name, recipeTestingData[2].tags)
+    recipe1 = new Recipe(recipeTestingData[0].name, recipeTestingData[0].id, recipeTestingData[0].image, recipeTestingData[0].ingredients, recipeTestingData[0].instructions, recipeTestingData[0].tags)
+    recipe2 = new Recipe(recipeTestingData[1].name, recipeTestingData[1].id, recipeTestingData[1].image, recipeTestingData[1].ingredients, recipeTestingData[1].instructions, recipeTestingData[1].name, recipeTestingData[1].tags)
+    recipe3 = new Recipe(recipeTestingData[2].name, recipeTestingData[2].id, recipeTestingData[2].image, recipeTestingData[2].ingredients, recipeTestingData[2].instructions, recipeTestingData[2].name, recipeTestingData[2].tags)
   });
 
   it('should be a function', () => {

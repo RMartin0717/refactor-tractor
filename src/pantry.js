@@ -1,11 +1,8 @@
 import ingredientsData from "./data/ingredients";
-import Recipe from "./recipe";
-// let recipe = new Recipe(recipe, ingredientsData)
 
 class Pantry {
-  constructor(userIngredients, ingredientsData) {
+  constructor(userIngredients) {
     this.contents = userIngredients;
-    this.ingredientsData = ingredientsData;
   }
 
   getPantryStock() {

@@ -38,8 +38,6 @@ describe('Recipe', () => {
     ]);
   });
 
-  // describe('Recipe Data', () => {
-
     it('should be a function', () => {
       expect(Recipe).to.be.a('function');
     });
@@ -75,7 +73,7 @@ describe('Recipe', () => {
             "amount": 0.5,
             "unit": "tsp"
           }
-        }])
+        }]);
     });
 
     it('should have an array of instructions', () => {
@@ -99,6 +97,10 @@ describe('Recipe', () => {
         "antipasto",
         "hor d'oeuvre"
       ]);
+    });
+
+    it('should list names of ingredients needed', () => {
+      expect(recipe.getIngredientNames()).to.deep.equal(['wheat flour', 'bicarbonate of soda']);
     });
 
     it('should return recipe instructions', () => {

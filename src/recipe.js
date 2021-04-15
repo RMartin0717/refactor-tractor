@@ -10,6 +10,18 @@ class Recipe {
     this.tags = tags;
   }
 
+  getIngredientNames() {
+    let ingredientNames = [];
+    this.ingredients.forEach(ingredient => {
+      ingredientsData.find(specificIngredient => {
+        if (ingredient.id === specificIngredient.id) {
+          ingredientNames.push(specificIngredient.name);
+        }
+      });
+    });
+    return ingredientNames;
+  };
+
   calculateCost() {
     let costCounter = 0;
     this.ingredients.forEach(ingredient => {
@@ -17,7 +29,7 @@ class Recipe {
         if (specificIngredient.id === ingredient.id) {
           costCounter += (specificIngredient.estimatedCostInCents * ingredient.quantity.amount) / 100;
         }
-      })
+      });
     });
     return costCounter;
   }

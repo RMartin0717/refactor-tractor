@@ -257,19 +257,22 @@ describe('Recipe Repository', () => {
   });
 
   it('should hold recipe data', () => {
+    
     expect(recipeRepository.recipes).to.equal(recipeTestData);
   });
 
   it('should return recipes by tags', () => {
-    const recipeTags = recipeRepository.returnTags('main course');
-    expect(recipeTags).to.deep.equal([recipeTestData[1]]);
+
+    expect(recipeRepository.returnTags('main course')).to.deep.equal([recipeTestData[1]]);
   })
 
-  it.skip('should be able to filter through recipes by ingredients', () => {
-    expect(recipeRepository.findRecipe('garlic')).to.equal(recipeTestData[1]);
+  it('should be able to filter through recipes by ingredients', () => {
+    
+    expect(recipeRepository.findRecipe('garlic')).to.deep.equal([recipeTestData[1]]);
   });
 
-  it.skip('Should be able to filter through its array by name', () => {
-      expect(recipeRepository.findRecipe('Loaded Chocolate Chip Pudding Cookie Cups')).to.equal([recipeTestData[0]]);
+  it('Should be able to filter recipes by name', () => {
+      
+    expect(recipeRepository.findRecipe('Loaded Chocolate Chip Pudding Cookie Cups')).to.deep.equal([recipeTestData[0]]);
   });
 });

@@ -13,15 +13,24 @@ class RecipeRepository {
     return taggedRecipes;
   }
 
-  findRecipe(searchText) {
-    const filteredRecipes = this.recipes.filter(recipe => {
-      const ingredientKeys = Object.keys(recipe.ingredients);
-      if (recipe.ingredients.name.includes(searchText) || recipe.name.includes(searchText)) {
+  findRecipe(searchTerm) {
+    const searchResults = this.recipes.reduce((results, recipe) => {
+      const matchingTerms = recipe.ingredients.find(ingredient => {
+        return ingredient.name === searchTerm || recipe.name === searchTerm;
+      });
+      if (matchingTerms) {
+        results.push(recipe);
       }
+      return results;
+    }, [])
+    return searchResults;
+  }
+
+ 
    
-    })
+  
     // console.log(filteredRecipes);
-    return filteredRecipes;
+    // return filteredRecipes;
   
     // const filteredRecipes = this.recipes.filter(recipe => {
     //   return recipe.ingredients.find(ingredient => {
@@ -31,6 +40,5 @@ class RecipeRepository {
     // })
     // console.log(filteredRecipes);
   }
-}
 
 export default RecipeRepository;

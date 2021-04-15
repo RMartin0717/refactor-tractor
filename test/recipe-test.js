@@ -1,8 +1,5 @@
 import { expect } from 'chai';
-
 import Recipe from '../src/recipe.js';
-import recipeData from '../src/data/recipes.js';
-import ingredientsData from '../src/data/ingredients.js';
 
 let recipe;
 
@@ -41,7 +38,7 @@ describe('Recipe', () => {
     ]);
   });
 
-  describe('Recipe Data', () => {
+  // describe('Recipe Data', () => {
 
     it('should be a function', () => {
       expect(Recipe).to.be.a('function');
@@ -63,7 +60,7 @@ describe('Recipe', () => {
       expect(recipe.image).to.equal('https://spoonacular.com/recipeImages/595736-556x370.jpg')
     });
 
-    it('should have a list of ingredients', () => {
+    it('should hold an array of ingredients', () => {
       expect(recipe.ingredients).to.deep.equal([
         {
           "id": 20081,
@@ -81,7 +78,7 @@ describe('Recipe', () => {
         }])
     });
 
-    it('should have a list of instructions', () => {
+    it('should have an array of instructions', () => {
       expect(recipe.instructions).to.deep.equal([
         {
           "instruction": "In a large mixing bowl, whisk together the dry ingredients (flour, pudding mix, soda and salt). Set aside.In a large mixing bowl of a stand mixer, cream butter for 30 seconds. Gradually add granulated sugar and brown sugar and cream until light and fluffy.",
@@ -90,7 +87,7 @@ describe('Recipe', () => {
         {
           "instruction": "Add egg and vanilla and mix until combined.",
           "number": 2
-        }])
+        }]);
     });
 
     it('should have tags', () => {
@@ -104,10 +101,14 @@ describe('Recipe', () => {
       ]);
     });
 
+    it('should return recipe instructions', () => {
+      expect(recipe.getInstructions()).to.deep.equal([
+        "In a large mixing bowl, whisk together the dry ingredients (flour, pudding mix, soda and salt). Set aside.In a large mixing bowl of a stand mixer, cream butter for 30 seconds. Gradually add granulated sugar and brown sugar and cream until light and fluffy.",
+        "Add egg and vanilla and mix until combined."
+      ]);
+    });
 
-    // it('Should be able to calculate the cost of its ingredients', () => {
-    //   // console.log(ingredientsData);
-    //   expect(recipe.calculateCost()).to.equal(4166);
+    it('should calculate the cost of its ingredients', () => {
+      expect(recipe.calculateCost()).to.equal(5.04);
   });
 });
-

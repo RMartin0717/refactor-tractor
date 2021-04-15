@@ -1,3 +1,5 @@
+import ingredientsData from './data/ingredients.js'
+
 class Recipe {
   constructor(name, id, image, ingredients, instructions, tags) {
     this.name = name;
@@ -11,16 +13,21 @@ class Recipe {
   calculateCost() {
     let costCounter = 0;
     this.ingredients.forEach(ingredient => {
-      this.ingredientsData.find(specificIngredient => {
+      ingredientsData.find(specificIngredient => {
         if (specificIngredient.id === ingredient.id) {
-          costCounter += (Number(specificIngredient.estimatedCostInCents) *
-          Number(ingredient.quantity.amount))
+          costCounter += (specificIngredient.estimatedCostInCents * ingredient.quantity.amount) / 100;
         }
       })
     });
     return costCounter;
   }
 
-}
+  getInstructions() {
+    const instructionList = this.instructions.map(instruction => instruction.instruction);
+
+    return instructionList;
+  };
+};
+
 
 export default Recipe;

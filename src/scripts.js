@@ -1,3 +1,5 @@
+// import './app.js';
+
 import './css/base.scss';
 import './css/styles.scss';
 
@@ -10,11 +12,32 @@ import Recipe from './recipe';
 import User from './user';
 import RecipeRepository from './recipeRepository';
 
+const userURL = "http://localhost:3001/api/v1/users";
+const ingredientsURL = "http://localhost:3001/api/v1/ingredients";
+const recipesURL = "http://localhost:3001/api/v1/recipes";
+const retrieveUserData = fetch(userURL)
+.then(response => response.json())
+const retrieveIngredientsData = fetch(ingredientsURL)
+.then(response => response.json())
+const retrieveRecipesData = fetch(recipesURL)
+.then(response => response.json())
+
+//want to get working off linked app.js
+
 let favButton = document.querySelector('.view-favorites');
 let homeButton = document.querySelector('.home')
 let cardArea = document.querySelector('.all-cards');
+
+Promise.all([retrieveUserData, retrieveIngredientsData, retrieveRecipesData])
+  .then((values) => {
+
+    data => {return data}
+  })
+  // .catch(err => console.log("Duck season wabbit season"))
+
 let recipeRepository = new RecipeRepository(recipeData);
 let user, pantry;
+
 
 window.onload = onStartup();
 
@@ -23,14 +46,19 @@ favButton.addEventListener('click', viewFavorites);
 cardArea.addEventListener('click', cardButtonConditionals);
 
 function onStartup() {
+  createRandomUser();
+  populateCards(recipeRepository.recipes);
+  greetUser();
+}
+
+function createRandomUser() {
   let userId = (Math.floor(Math.random() * 49) + 1)
   let newUser = users.find(user => {
     return user.id === Number(userId);
   });
+  //need to link user data (and use random user method on it)
   user = new User(userId, newUser.name, newUser.pantry)
   pantry = new Pantry(newUser.pantry)
-  populateCards(recipeRepository.recipes);
-  greetUser();
 }
 
 function viewFavorites() {

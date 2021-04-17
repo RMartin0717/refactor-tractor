@@ -2,6 +2,7 @@
 
 import './css/base.scss';
 import './css/styles.scss';
+import domUpdates from './domUpdates';
 
 import recipeData from './data/recipes';
 import ingredientsData from './data/ingredients';
@@ -16,14 +17,14 @@ const userURL = "http://localhost:3001/api/v1/users";
 const ingredientsURL = "http://localhost:3001/api/v1/ingredients";
 const recipesURL = "http://localhost:3001/api/v1/recipes";
 const retrieveUserData = fetch(userURL)
-.then(response => response.json())
-.then(data => data)
+  .then(response => response.json())
+  .then(data => data)
 const retrieveIngredientsData = fetch(ingredientsURL)
-.then(response => response.json())
-.then(data => data)
+  .then(response => response.json())
+  .then(data => data)
 const retrieveRecipesData = fetch(recipesURL)
-.then(response => response.json())
-.then(data => data)
+  .then(response => response.json())
+  .then(data => data)
 
 let allUsersData = [];
 let allIngredientsData = [];
@@ -70,14 +71,12 @@ function onStartup(allUsersData, allIngredientsData, allRecipeData) {
   createRandomUser(allUsersData);
   createUserPantry(allIngredientsData);
   createRecipeRepo(allRecipesData);
+  domUpdates.greetUser(user)
   //do something allIngredientsData
-  console.log("users data", allUsersData)
-  console.log("ingredients data", allIngredientsData)
-  console.log("recipes data", allRecipesData)
-  }
+}
 
 
-function createRandomUser(data) {
+function createRandomUser(allUsersData) {
   let userId = (Math.floor(Math.random() * 49) + 1)
   let newUser = allUsersData.find(user => {
     return user.id === Number(userId);
@@ -125,11 +124,11 @@ function viewFavorites() {
   }
 }
 
-function greetUser() {
-  const userName = document.querySelector('.user-name');
-  userName.innerHTML =
-  user.name.split(' ')[0] + ' ' + user.name.split(' ')[1][0];
-}
+// function greetUser() {
+//   const userName = document.querySelector('.user-name');
+//   userName.innerHTML =
+//   user.name.split(' ')[0] + ' ' + user.name.split(' ')[1][0];
+// }
 
 function favoriteCard(event) {
   let specificRecipe = recipeRepository.recipes.find(recipe => {
@@ -197,7 +196,9 @@ function getFavorites() {
     user.favoriteRecipes.forEach(recipe => {
       document.querySelector(`.favorite${recipe.id}`).classList.add('favorite-active')
     })
-  } else return
+  } else {
+    return
+  }
 }
 
 function populateCards(recipes) {
@@ -225,4 +226,4 @@ function populateCards(recipes) {
     </div>`)
   })
   getFavorites();
-};
+}

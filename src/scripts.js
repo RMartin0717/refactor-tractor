@@ -1,3 +1,5 @@
+// import './app.js';
+
 import './css/base.scss';
 import './css/styles.scss';
 
@@ -10,27 +12,85 @@ import Recipe from './recipe';
 import User from './user';
 import RecipeRepository from './recipeRepository';
 
+const userURL = "http://localhost:3001/api/v1/users";
+const ingredientsURL = "http://localhost:3001/api/v1/ingredients";
+const recipesURL = "http://localhost:3001/api/v1/recipes";
+const retrieveUserData = fetch(userURL)
+.then(response => response.json())
+.then(data => data)
+const retrieveIngredientsData = fetch(ingredientsURL)
+.then(response => response.json())
+.then(data => data)
+const retrieveRecipesData = fetch(recipesURL)
+.then(response => response.json())
+.then(data => data)
+
+let allUsersData = [];
+let allIngredientsData = [];
+let allRecipesData = [];
+
+
+//want to get working off linked app.js
+
 let favButton = document.querySelector('.view-favorites');
 let homeButton = document.querySelector('.home')
 let cardArea = document.querySelector('.all-cards');
-let recipeRepository = new RecipeRepository(recipeData);
-let user, pantry;
 
-window.onload = onStartup();
+
+Promise.all([retrieveUserData, retrieveIngredientsData, retrieveRecipesData])
+  .then((data) => {
+    // console.log(data)
+    allUsersData = data[0]
+    allIngredientsData = data[1]
+    allRecipesData = data[2]
+    onStartup(allUsersData, allIngredientsData, allRecipesData);
+    // })
+  })
+  // .catch(err => console.log("Duck season wabbit season"))
+
+
+let recipeRepository = new RecipeRepository(allRecipesData);
+let user, pantry, recipeRepo
+
+
+// window.onload = onStartup();
 
 homeButton.addEventListener('click', cardButtonConditionals);
 favButton.addEventListener('click', viewFavorites);
 cardArea.addEventListener('click', cardButtonConditionals);
 
-function onStartup() {
+// function onStartup() {
+//   createRandomUser();
+//   populateCards(recipeRepository.recipes);
+//   greetUser();
+//     console.log("all user data", allUsersData)
+// }
+
+function onStartup(allUsersData, allIngredientsData, allRecipeData) {
+  createRandomUser(allUsersData);
+  createUserPantry(allIngredientsData);
+  createRecipeRepo(allRecipesData);
+  //do something allIngredientsData
+  console.log("users data", allUsersData)
+  console.log("ingredients data", allIngredientsData)
+  console.log("recipes data", allRecipesData)
+  }
+
+
+function createRandomUser(data) {
   let userId = (Math.floor(Math.random() * 49) + 1)
-  let newUser = users.find(user => {
+  let newUser = allUsersData.find(user => {
     return user.id === Number(userId);
   });
   user = new User(userId, newUser.name, newUser.pantry)
-  pantry = new Pantry(newUser.pantry)
-  populateCards(recipeRepository.recipes);
-  greetUser();
+}
+
+function createUserPantry(data) {
+  pantry = new Pantry(user.pantry)
+}
+
+function createRecipeRepo(data) {
+  recipeRepo = new RecipeRepository(allRecipesData);
 }
 
 function viewFavorites() {

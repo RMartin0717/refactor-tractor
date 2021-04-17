@@ -1,4 +1,4 @@
-import ingredientsData from './data/ingredients.js'
+// import ingredientsData from './data/ingredients.js'
 
 class Recipe {
   constructor(name, id, image, ingredients, instructions, tags) {

@@ -1,8 +1,9 @@
-import ingredientsData from "./data/ingredients";
+// import ingredientsData from "./data/ingredients";
 
 class Pantry {
-  constructor(userIngredients) {
+  constructor(userIngredients, ingredientsData) {
     this.contents = userIngredients;
+    this.ingredientsData = ingredientsData;
   }
 
   getPantryStock() {
@@ -14,7 +15,7 @@ class Pantry {
       const ingredientList = {};
       const id = ingredient.id;
       const amount = ingredient.quantity.amount;
-      ingredientsData.forEach(ingredientData => {
+      this.ingredientsData.forEach(ingredientData => {
         const name = ingredientData.name;
         if (ingredientData.id === id) {
           ingredientList.name = name;

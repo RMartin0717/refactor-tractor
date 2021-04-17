@@ -70,13 +70,6 @@ function onStartup(allUsersData, allIngredientsData, allRecipeData) {
   createRandomUser(allUsersData);
   createUserPantry(allIngredientsData);
   createRecipeRepo(allRecipesData);
-  let userId = (Math.floor(Math.random() * 49) + 1)
-  let newUser = allUsersData.find(user => {
-    return user.id === Number(userId);
-  });
-  user = new User(userId, newUser.name, newUser.pantry);
-
-  recipeRepo = new RecipeRepository(allRecipesData);
   //do something allIngredientsData
   console.log("users data", allUsersData)
   console.log("ingredients data", allIngredientsData)
@@ -93,7 +86,7 @@ function createRandomUser(data) {
 }
 
 function createUserPantry(data) {
-  pantry = new Pantry(newUser.pantry)
+  pantry = new Pantry(user.pantry)
 }
 
 function createRecipeRepo(data) {

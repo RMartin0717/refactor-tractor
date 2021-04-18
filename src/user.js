@@ -7,7 +7,6 @@ class User {
     this.recipesToCook = [];
   }
 
-
   addToFavorites(recipe) {
     if (!this.favoriteRecipes.includes(recipe)) {
       this.favoriteRecipes.push(recipe)
@@ -32,12 +31,14 @@ class User {
   }
 
   searchFavoritesByNameOrIng(searchWord) {
-    return this.favoriteRecipes.filter(recipe => {
-      return recipe.name.includes(searchWord)
-      || recipe.ingredients.find(ingredient => {
-        return ingredient.name.includes(searchWord)
-      });
-    });
+    const checkName = this.favoriteRecipes.filter(recipe => recipe.name.includes(searchWord))
+
+    const checkIng = this.favoriteRecipes.filter(recipe => {
+       const checkNestedIngredients = recipe.ingredients.find(ingredient => ingredient.name.includes(searchWord))
+       return checkNestedIngredients
+     });
+    const searchResults = checkName.concat(checkIng)
+    return searchResults
   }
 }
 

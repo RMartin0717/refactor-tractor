@@ -1,7 +1,10 @@
+<<<<<<< HEAD
+=======
+// import './app.js';
+>>>>>>> 3350bfc8726ff78be422671f9ceb4d9eeeb3c209
 import './css/base.scss';
 import './css/styles.scss';
 import domUpdates from './domUpdates';
-
 import Pantry from './pantry';
 import Recipe from './recipe';
 import User from './user';
@@ -34,7 +37,7 @@ let cardArea = document.querySelector('.all-cards');
 Promise.all([retrieveUserData, retrieveIngredientsData, retrieveRecipesData])
   .then((data) => {
     allUsersData = data[0]
-    allIngredientsData = data[1]
+    allIngredientsData = data[1];
     allRecipesData = data[2]
     onStartup(allUsersData, allIngredientsData, allRecipesData);
   })
@@ -78,4 +81,3 @@ function createUserPantry(allIngredientsData) {
 function createRecipeRepo(allRecipesData) {
   recipeRepo = new RecipeRepository(allRecipesData);
 }
-

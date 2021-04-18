@@ -107,9 +107,18 @@ describe('Recipe', () => {
     ]);
   });
 
-  it('should list names of ingredients needed', () => {
+  it('should list ingredients needed', () => {
       
-    expect(recipe.getIngredientNames()).to.deep.equal(['wheat flour', 'bicarbonate of soda']);
+    expect(recipe.getIngredientNames()).to.deep.equal([{
+      "id": 20081,
+      "name": "wheat flour",
+      "estimatedCostInCents": 142
+    },
+    {
+      "id": 18372,
+      "name": "bicarbonate of soda",
+      "estimatedCostInCents": 582
+    }]);
   });
 
   it('should return recipe instructions', () => {

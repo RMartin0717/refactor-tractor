@@ -1,4 +1,3 @@
-// import './app.js';
 import './css/base.scss';
 import './css/styles.scss';
 import domUpdates from './domUpdates';
@@ -31,14 +30,12 @@ let favButton = document.querySelector('.view-favorites');
 let homeButton = document.querySelector('.home')
 let cardArea = document.querySelector('.all-cards');
 
-
 Promise.all([retrieveUserData, retrieveIngredientsData, retrieveRecipesData])
   .then((data) => {
     allUsersData = data[0]
     allIngredientsData = data[1];
     allRecipesData = data[2]
     onStartup(allUsersData, allIngredientsData, allRecipesData);
-
   })
 
 let user, pantry, recipeRepo;
@@ -47,19 +44,19 @@ favButton.addEventListener('click', handleFavorites);
 homeButton.addEventListener('click', handleCards);
 cardArea.addEventListener('click', handleCards);
 
-
 function handleFavorites() {
+  domUpdates.getFavorites(user);
   domUpdates.viewFavorites(user, recipeRepo);
 }
 
 function handleCards() {
-  domUpdates.cardButtonConditionals(event, recipeRepo);
+  domUpdates.cardButtonConditionals(event, recipeRepo, user);
 }
 
 function onStartup(allUsersData, allIngredientsData, allRecipesData) {
   createRandomUser(allUsersData);
-  createUserPantry(allIngredientsData);
   createRecipeRepo(allRecipesData);
+  createUserPantry(allIngredientsData);
   domUpdates.greetUser(user)
   domUpdates.populateCards(allRecipesData)
   //do something allIngredientsData
@@ -74,7 +71,7 @@ function createRandomUser(allUsersData) {
 }
 
 function createUserPantry(allIngredientsData) {
-  pantry = new Pantry(user.pantry)
+  pantry = new Pantry(allIngredientsData)
 }
 
 function createRecipeRepo(allRecipesData) {

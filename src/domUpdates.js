@@ -1,10 +1,5 @@
-
-import Recipe from './recipe';
-import User from './user';
 const recipeCards = document.querySelector('.all-cards');
 const favButton = document.querySelector('.view-favorites');
-
-
 
 let domUpdates = {
 
@@ -21,7 +16,6 @@ let domUpdates = {
     if (!user.favoriteRecipes.length) {
       favButton.innerHTML = 'You have no favorites!';
       this.populateCards(recipeRepository.recipes);
-      return
     } else {
       favButton.innerHTML = 'Refresh Favorites'
       recipeCards.innerHTML = '';
@@ -46,17 +40,14 @@ let domUpdates = {
     }
   },
 
-  // getFavorites(user) {
-  //   if (user.favoriteRecipes.length) {
-  //     user.favoriteRecipes.forEach(recipe => {
-  //       document.querySelector(`.favorite${recipe.id}`).classList.add('favorite-active')
-  //     })
-  //   } else {
-  //     return
-  //   }
-  // },
-  // will need to come back to this and debug the issues
-
+  getFavorites(user) {
+    if (user.favoriteRecipes.length) {
+      user.favoriteRecipes.forEach(recipe => {
+        document.querySelector(`.favorite${recipe.id}`).classList.add('favorite-active')
+      })
+    }
+  },
+  
   populateCards(recipes) {
     recipeCards.innerHTML = '';
     if (recipeCards.classList.contains('all')) {
@@ -81,7 +72,6 @@ let domUpdates = {
           src='${recipe.image}' alt='click to view recipe for ${recipe.name}'>
     </div>`)
     })
-    // this.getFavorites();
   },
 
   favoriteCard(event, recipeRepo, user) {
@@ -151,11 +141,11 @@ let domUpdates = {
         recipe-info'>
         </span></ol>
       </p>`
-     ;
+    ;
 
-      let ingredientsSpan = document.querySelector('.ingredients');
-      let instructionsSpan = document.querySelector('.instructions');
-      ingredientsObj.forEach(ingredient => {
+    let ingredientsSpan = document.querySelector('.ingredients');
+    let instructionsSpan = document.querySelector('.instructions');
+    ingredientsObj.forEach(ingredient => {
       ingredientsSpan.insertAdjacentHTML('afterbegin', `
       <ul><li>
       ${ingredient.amount.toFixed(2)} 

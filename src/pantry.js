@@ -1,9 +1,11 @@
-// import ingredientsData from "./data/ingredients";
+import ingredientsData from "./data/ingredients";
+import Recipe from "./recipe";
+let recipe = new Recipe(ingredientsData)
 
 class Pantry {
-  constructor(userIngredients, ingredientsData) {
+  constructor(userIngredients) {
     this.contents = userIngredients;
-    this.ingredientsData = ingredientsData;
+    // this.ingredientsData = ingredientsData;
   }
 
   getPantryStock() {
@@ -15,7 +17,7 @@ class Pantry {
       const ingredientList = {};
       const id = ingredient.id;
       const amount = ingredient.quantity.amount;
-      this.ingredientsData.forEach(ingredientData => {
+      ingredientsData.forEach(ingredientData => {
         const name = ingredientData.name;
         if (ingredientData.id === id) {
           ingredientList.name = name;
@@ -23,19 +25,6 @@ class Pantry {
         }
       })
       return ingredientList;
-    })
-  }
-
-  removeStockFromPantry(recipe) {
-    this.contents.forEach(item => {
-      recipe.ingredients.forEach((ingredient => {
-        if (item.ingredient === ingredient.id) {
-          item.amount -= ingredient.quantity.amount
-        }
-      }))
-    });
-    this.contents = this.contents.filter((item) => {
-      return item.amount > 0;
     })
   }
 
@@ -61,6 +50,19 @@ class Pantry {
       ingredientsAvailable.missingIngredients.push(matchingPantryItem)
     });
     return ingredientsAvailable;
+  }
+
+  removeStockFromPantry(recipe) {
+    this.contents.forEach(item => {
+      recipe.ingredients.forEach((ingredient => {
+        if (item.ingredient === ingredient.id) {
+          item.amount -= ingredient.quantity.amount
+        }
+      }))
+    });
+    this.contents = this.contents.filter((item) => {
+      return item.amount > 0;
+    })
   }
 }
 

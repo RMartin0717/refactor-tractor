@@ -263,7 +263,7 @@ describe('Recipe Repository', () => {
 
   it('should return recipes by tags', () => {
 
-    expect(recipeRepository.returnTags('main course')).to.deep.equal([recipeTestData[1]]);
+    expect(recipeRepository.returnTags(['main course'])).to.deep.equal([recipeTestData[1]]);
   })
 
   it('should be able to filter through recipes by ingredients', () => {

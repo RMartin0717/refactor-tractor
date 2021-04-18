@@ -31,36 +31,25 @@ class User {
     return searchResults
   }
 
-  searchFavoritesByNameOrIng(searchWord) {
-    // return this.favoriteRecipes.filter(recipe => {
-    //   return recipe.name.includes(searchWord)
-    //   || recipe.ingredients.filter(ingredient => {
-    //     return ingredient.name.includes(searchWord)
-    //   });
-    // });
+  // searchFavoritesByNameOrIng(searchWord) {
+  //   return this.favoriteRecipes.filter(recipe => {
+  //     return recipe.name.includes(searchWord)
+  //     || recipe.ingredients.find(ingredient => {
+  //       return ingredient.name.includes(searchWord)
+  //     });
+  //   });
+  // }
 
+  searchFavoritesByNameOrIng(searchWord) {
     const checkName = this.favoriteRecipes.filter(recipe => recipe.name.includes(searchWord))
 
-    const checkIng = [];
-    this.favoriteRecipes.forEach(recipe => {
-       const checkNestedIngredients = recipe.ingredients.filter(ingredient => ingredient.name.includes(searchWord))
-
-       checkIng.concat(checkNestedIngredients)
+    const checkIng = this.favoriteRecipes.filter(recipe => {
+       const checkNestedIngredients = recipe.ingredients.find(ingredient => ingredient.name.includes(searchWord))
+       console.log(checkNestedIngredients)
+       return checkNestedIngredients
      });
-    console.log(checkIng, "check ingredients")
     const searchResults = checkName.concat(checkIng)
     return searchResults
-
-    // const searchResults = this.favoriteRecipes.reduce((results, recipe) => {
-    //   const matchingTerms = recipe.ingredients.find(ingredient => {
-    //     return ingredient.name === searchWord || recipe.name === searchWord;
-    //   });
-    //   if (matchingTerms) {
-    //     results.push(recipe);
-    //   }
-    //   return results;
-    // }, [])
-    // return searchResults;
   }
 }
 

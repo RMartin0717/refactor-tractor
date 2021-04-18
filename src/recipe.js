@@ -1,8 +1,9 @@
-// import ingredientsData from './data/ingredients.js'
+// import { allIngredientsData } from '../src/scripts'
+import ingredientsData from './data/ingredients'
 
 class Recipe {
   constructor(name, id, image, ingredients, instructions, tags) {
-    this.name = name;
+    this.name = name; 
     this.id = id;
     this.image = image;
     this.ingredients = ingredients;
@@ -15,7 +16,7 @@ class Recipe {
     this.ingredients.forEach(ingredient => {
       ingredientsData.find(specificIngredient => {
         if (ingredient.id === specificIngredient.id) {
-          ingredientNames.push(specificIngredient.name);
+          ingredientNames.push(specificIngredient);
         }
       });
     });

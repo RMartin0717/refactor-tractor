@@ -1,8 +1,11 @@
 const recipeCards = document.querySelector('.all-cards');
 const favButton = document.querySelector('.view-favorites');
-
+import User from "./user";
+let user;
+import Recipe from "./recipe";
 
 let domUpdates = {
+
 
   greetUser(user) {
     const userName = document.querySelector('.user-name');
@@ -17,7 +20,6 @@ let domUpdates = {
     if (!user.favoriteRecipes.length) {
       favButton.innerHTML = 'You have no favorites!';
       this.populateCards(recipeRepository.recipes);
-      return
     } else {
       favButton.innerHTML = 'Refresh Favorites'
       recipeCards.innerHTML = '';
@@ -42,15 +44,14 @@ let domUpdates = {
     }
   },
 
-  // getFavorites(user) {
-  //   if (user.favoriteRecipes.length) {
-  //     user.favoriteRecipes.forEach(recipe => {
-  //       document.querySelector(`.favorite${recipe.id}`).classList.add('favorite-active')
-  //     })
-  //   } else {
-  //     return
-  //   }
-  // },
+  getFavorites(user) {
+    if (user.favoriteRecipes.length) {
+      user.favoriteRecipes.forEach(recipe => {
+        document.querySelector(`.favorite${recipe.id}`).classList.add('favorite-active')
+      })
+     }
+  },
+
   // will need to come back to this and debug the issues
 
   populateCards(recipes) {
@@ -77,11 +78,9 @@ let domUpdates = {
           src='${recipe.image}' alt='click to view recipe for ${recipe.name}'>
     </div>`)
     })
-    // this.getFavorites();
   },
 
   favoriteCard(event, recipeRepo, user) {
-    console.log(recipeRepo, 'second')
     let specificRecipe = recipeRepo.recipes.find(recipe => {
       if (recipe.id  === Number(event.target.id)) {
         return recipe;

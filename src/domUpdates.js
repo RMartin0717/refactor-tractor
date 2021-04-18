@@ -85,7 +85,6 @@ let domUpdates = {
   },
 
   favoriteCard(event, recipeRepo, user) {
-    console.log(recipeRepo, 'second')
     let specificRecipe = recipeRepo.recipes.find(recipe => {
       if (recipe.id  === Number(event.target.id)) {
         return recipe;
@@ -119,14 +118,12 @@ let domUpdates = {
         return recipe;
       }
       return recipe;
-    })
+    });
 
     let currentRecipe = new Recipe(matchingRecipe.name, matchingRecipe.id, matchingRecipe.image, matchingRecipe.ingredients, matchingRecipe.instructions, matchingRecipe.tags);
-    
-    console.log(currentRecipe.ingredients);
     let cost = currentRecipe.calculateCost().toFixed(2);
     let curIngredientNames = currentRecipe.getIngredientNames();
-    console.log(curIngredientNames);
+    
     const ingredientsObj = currentRecipe.ingredients.map(ingredient => {
       const ingList = {};
       const id = ingredient.id;
@@ -141,9 +138,8 @@ let domUpdates = {
         }
       })
       return ingList;
-    })
+    });
     
-   
     recipeCards.classList.add('all');
     recipeCards.innerHTML = `
       <h3>${currentRecipe.name}</h3>
@@ -167,13 +163,12 @@ let domUpdates = {
       ${ingredient.name}
     </li></ul>
     `)
-    
-    })
+    });
     currentRecipe.instructions.forEach(instruction => {
       instructionsSpan.insertAdjacentHTML('beforebegin', `<li>
     ${instruction.instruction}</li>
     `)
-    })
+    });
   }
 }
 

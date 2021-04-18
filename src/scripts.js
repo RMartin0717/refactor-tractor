@@ -75,10 +75,8 @@ function createRandomUser(allUsersData) {
 
 function createUserPantry(allIngredientsData) {
   pantry = new Pantry(user.pantry)
-  console.log(allIngredientsData);
 }
 
 function createRecipeRepo(allRecipesData) {
   recipeRepo = new RecipeRepository(allRecipesData);
-  console.log(recipeRepo);
 }

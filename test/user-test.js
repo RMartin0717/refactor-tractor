@@ -35,30 +35,28 @@ describe('User', () => {
     user1.addToRecipesToCook(recipeTestingData[1]);
     expect(user1.recipesToCook).to.deep.equal([recipeTestingData[1]]);
   });
-  it.only('Should be able to filter through favoriteRecipes by tag', () => {
-    user1.addToFavorites(recipeTestingData[0]);
-    user1.addToFavorites(recipeTestingData[1]);
-    user1.addToFavorites(recipeTestingData[2]);
-    user1.addToFavorites(recipeTestingData[3]);
-    const searchByTag = user1.searchFavoritesByTag(["starter"]);
-    expect(searchByTag).to.deep.equal([recipeTestingData[0], recipeTestingData[3]]);
-  });
-  it('Should be able to filter through favoriteRecipes by more than one tag', () => {
-    user1.addToFavorites(recipeTestingData[0]);
-    user1.addToFavorites(recipeTestingData[1]);
-    user1.addToFavorites(recipeTestingData[2]);
-    user1.addToFavorites(recipeTestingData[3]);
-    const searchByTag = user1.searchFavoritesByTag(["snack", "dinner"]);
-    expect(searchByTag).to.deep.equal([recipeTestingData[0], recipeTestingData[1]]);
-  });
-  it('Should be able to search favoriteRecipes by name or ingredient', () => {
-    user1.addToFavorites(recipeTestingData[0]);
-    user1.addToFavorites(recipeTestingData[1]);
-    user1.addToFavorites(recipeTestingData[2]);
-    user1.addToFavorites(recipeTestingData[3]);
-    const searchByIng = user1.searchFavoritesByNameOrIng("brown sugar");
-    expect(searchByIng).to.deep.equal([recipeTestingData[2]]);
-    const searchByName = user1.searchFavoritesByNameOrIng("Pudding");
-    expect(searchByName).to.deep.equal([recipeTestingData[0]]);
+  describe('Search Methods', () => {
+    beforeEach(() => {
+      user1.addToFavorites(recipeTestingData[0]);
+      user1.addToFavorites(recipeTestingData[1]);
+      user1.addToFavorites(recipeTestingData[2]);
+      user1.addToFavorites(recipeTestingData[3]);
+    });
+    it('Should be able to filter through favoriteRecipes by tag', () => {
+      const searchByTag = user1.searchFavoritesByTag(["starter"]);
+      expect(searchByTag).to.deep.equal([recipeTestingData[0], recipeTestingData[3]]);
+    });
+    it('Should be able to filter through favoriteRecipes by more than one tag', () => {
+      const searchByTag = user1.searchFavoritesByTag(["snack", "dinner"]);
+      expect(searchByTag).to.deep.equal([recipeTestingData[0], recipeTestingData[1]]);
+    });
+    it('Should be able to search favoriteRecipes by name', () => {
+      const searchByName = user1.searchFavoritesByNameOrIng("Pudding");
+      expect(searchByName).to.deep.equal([recipeTestingData[0]]);
+    });
+    it('Should be able to search favoriteRecipes by ingredient', () => {
+      const searchByIng = user1.searchFavoritesByNameOrIng("mango");
+      expect(searchByIng).to.deep.equal([recipeTestingData[2]]);
+    });
   });
 });

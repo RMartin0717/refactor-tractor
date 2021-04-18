@@ -1,15 +1,7 @@
-
-import Recipe from './recipe';
-import User from './user';
 const recipeCards = document.querySelector('.all-cards');
 const favButton = document.querySelector('.view-favorites');
-import User from "./user";
-let user;
-import Recipe from "./recipe";
-
 
 let domUpdates = {
-
 
   greetUser(user) {
     const userName = document.querySelector('.user-name');
@@ -53,11 +45,9 @@ let domUpdates = {
       user.favoriteRecipes.forEach(recipe => {
         document.querySelector(`.favorite${recipe.id}`).classList.add('favorite-active')
       })
-     }
+    }
   },
-
-  // will need to come back to this and debug the issues
-
+  
   populateCards(recipes) {
     recipeCards.innerHTML = '';
     if (recipeCards.classList.contains('all')) {
@@ -151,11 +141,11 @@ let domUpdates = {
         recipe-info'>
         </span></ol>
       </p>`
-     ;
+    ;
 
-      let ingredientsSpan = document.querySelector('.ingredients');
-      let instructionsSpan = document.querySelector('.instructions');
-      ingredientsObj.forEach(ingredient => {
+    let ingredientsSpan = document.querySelector('.ingredients');
+    let instructionsSpan = document.querySelector('.instructions');
+    ingredientsObj.forEach(ingredient => {
       ingredientsSpan.insertAdjacentHTML('afterbegin', `
       <ul><li>
       ${ingredient.amount.toFixed(2)} 

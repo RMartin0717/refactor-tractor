@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-// import './app.js';
->>>>>>> 3350bfc8726ff78be422671f9ceb4d9eeeb3c209
 import './css/base.scss';
 import './css/styles.scss';
 import domUpdates from './domUpdates';

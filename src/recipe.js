@@ -1,13 +1,13 @@
-// import ingredientsData from './data/ingredients.js'
-
+import ingredientsData from "./data/ingredients";
 class Recipe {
-  constructor(name, id, image, ingredients, instructions, tags) {
+  constructor(name, id, image, ingredients, instructions, tags, ingredientsData) {
     this.name = name;
     this.id = id;
     this.image = image;
     this.ingredients = ingredients;
     this.instructions = instructions;
     this.tags = tags;
+    this.ingredientsData = ingredientsData;
   }
 
   getIngredientNames() {

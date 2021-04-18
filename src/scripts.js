@@ -1,6 +1,5 @@
 // import './app.js';
 
-import './css/base.scss';
 import './css/styles.scss';
 import domUpdates from './domUpdates';
 
@@ -82,4 +81,3 @@ function createUserPantry(allIngredientsData) {
 function createRecipeRepo(allRecipesData) {
   recipeRepo = new RecipeRepository(allRecipesData);
 }
-

@@ -1,5 +1,7 @@
+@import "base"; 
+
 html {
-  background-color: #37515C;
+  background-color: $page-background;
   border: 2px solid #000;
   height: 100vh;
 }
@@ -12,7 +14,7 @@ body {
 
 
 .main-header {
-  background-color: #EBF5EE;
+  background-color: $banner-background;
   border: 2px solid #000;
   display: flex;
   height: auto;
@@ -21,7 +23,7 @@ body {
 }
 
 .navButton {
-  background-color: #EBF5EE;
+  background-color: $banner-background;
   border-left: 1px solid #000;
   border-right: 1px solid #000;
   font-size: 130%;
@@ -53,7 +55,7 @@ h1 {
 }
 
 .search-button {
-  background-color: #EBF5EE;
+  background-color: $banner-background;
   border: 1px solid #000;
   width: 20%;
   height: 58px;
@@ -94,7 +96,7 @@ h1 {
 
 
 .add-button {
-  background-color: #EBF5EE;
+  background-color: $banner-background;
   display: flex;
   width: 12%;
 }
@@ -109,7 +111,7 @@ h1 {
 
 
 .favorite {
-  background-color: #EBF5EE;
+  background-color: $banner-background;
   background-image: url(https://image.flaticon.com/icons/svg/149/149222.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -136,7 +138,7 @@ img {
 
 
 .card-header {
-  background-color: #EBF5EE;
+  background-color: $banner-background;
   border-bottom: 1px solid #000;
   display: flex;
   justify-content: space-between;
@@ -149,13 +151,13 @@ img {
 
 .all-recipe-info,
 ol {
-  color: #EBF5EE;
+  color: $banner-background;
   font-size: 220%;
   width: 100%;
 }
 
 h3 {
-  color: #EBF5EE;
+  color: $banner-background;
   font-size: 250%;
 }
 
@@ -182,7 +184,7 @@ h3 {
 }
 
 main {
-  background-color: #37515C;
+  background-color: $page-background;
   height: 100%;
   width: 100%;
 }

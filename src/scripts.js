@@ -1,9 +1,7 @@
 // import './app.js';
-
 import './css/base.scss';
 import './css/styles.scss';
 import domUpdates from './domUpdates';
-
 import Pantry from './pantry';
 import Recipe from './recipe';
 import User from './user';
@@ -37,13 +35,13 @@ let cardArea = document.querySelector('.all-cards');
 Promise.all([retrieveUserData, retrieveIngredientsData, retrieveRecipesData])
   .then((data) => {
     allUsersData = data[0]
-    allIngredientsData = data[1]
+    allIngredientsData = data[1];
     allRecipesData = data[2]
     onStartup(allUsersData, allIngredientsData, allRecipesData);
 
   })
 
-let user, pantry, recipeRepo
+let user, pantry, recipeRepo;
 
 favButton.addEventListener('click', handleFavorites);
 homeButton.addEventListener('click', handleCards);
@@ -82,4 +80,3 @@ function createUserPantry(allIngredientsData) {
 function createRecipeRepo(allRecipesData) {
   recipeRepo = new RecipeRepository(allRecipesData);
 }
-

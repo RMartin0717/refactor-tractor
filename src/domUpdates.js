@@ -117,21 +117,12 @@ let domUpdates = {
       recipeInstances.push(recipe);
     });
 
-<<<<<<< HEAD
-    let currentRecipe = new Recipe(matchingRecipe.name, matchingRecipe.id, matchingRecipe.image, matchingRecipe.ingredients, matchingRecipe.instructions, matchingRecipe.tags);
-    let cost = currentRecipe.calculateCost().toFixed(2);
-    let curIngredientNames = currentRecipe.getIngredientNames();
-
-    const ingredientsObj = currentRecipe.ingredients.map(ingredient => {
-      const ingList = {};
-=======
     const matchingRecipe = recipeInstances.find(recipe => recipe.id === parseInt(event.target.id));
     let cost = matchingRecipe.calculateCost(ingredientsDataDOM).toFixed(2);
     let curIngredientNames = matchingRecipe.getIngredientNames(ingredientsDataDOM);
-    
+
     const ingredientsObj = matchingRecipe.ingredients.map(ingredient => {
       const ingredientList = {};
->>>>>>> main
       const id = ingredient.id;
       const amount = ingredient.quantity.amount;
       const unit = ingredient.quantity.unit;

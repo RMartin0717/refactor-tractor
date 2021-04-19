@@ -82,3 +82,32 @@ function createUserPantry(allIngredientsData) {
 function createRecipeRepo(allRecipesData) {
   recipeRepo = new RecipeRepository(allRecipesData);
 }
+
+function addUserIngredients() {
+  console.log(user.id)
+  console.log(user.pantry[0].ingredient)
+  console.log(user.pantry[0].amount)
+  let newData = {"userID": user.id, "ingredientID": user.pantry[0].ingredient, "ingredientModification": 5 };
+  console.log(user.pantry[0].amount, '2')
+  fetch(userURL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newData),
+  })
+    .then(response => userIngredientError(response.status))
+    .catch(error => console.log(error))
+  console.log(user.pantry[0].amount)
+}
+// .then()
+//use userID to update ingredientID by the ingredientModification
+//go to recipe and have it post all the ingredients needed
+//need to grab the userID for each random user to have post run
+
+function userIngredientError(res) {
+  console.log(res)
+  if (res >= 400) {
+    userGreet.innerText = "Request Failed.";
+  }
+}

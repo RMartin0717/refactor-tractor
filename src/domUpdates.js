@@ -2,7 +2,7 @@
 import Recipe from "./recipe";
 const recipeCards = document.querySelector('.all-cards');
 const favButton = document.querySelector('.view-favorites');
-
+let searchBar = document.querySelector('.search-bar');
 
 
 
@@ -102,7 +102,7 @@ let domUpdates = {
     if (event.target.classList.contains('favorite')) {
       this.favoriteCard(event, recipeRepo, user);
     } else if (event.target.classList.contains('card-picture')) {
-      this.displayDirections(event, recipeRepo);
+      this.displayDirections(event, recipeRepo, this.ingredientsDataDOM);
     } else if (event.target.classList.contains('home')) {
       favButton.innerHTML = 'View Favorites';
       this.populateCards(recipeRepo.recipes);
@@ -110,7 +110,7 @@ let domUpdates = {
   },
 
 
-  displayDirections(event, recipeRepo) {
+  displayDirections(event, recipeRepo, ingredientsDataDOM) {
     let recipeInstances = [];
     recipeRepo.recipes.forEach(recipe => {
       recipe = new Recipe(recipe.name, recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.tags);
@@ -118,8 +118,8 @@ let domUpdates = {
     });
 
     const matchingRecipe = recipeInstances.find(recipe => recipe.id === parseInt(event.target.id));
-    let cost = matchingRecipe.calculateCost().toFixed(2);
-    let curIngredientNames = matchingRecipe.getIngredientNames();
+    let cost = matchingRecipe.calculateCost(ingredientsDataDOM).toFixed(2);
+    let curIngredientNames = matchingRecipe.getIngredientNames(ingredientsDataDOM);
     
     const ingredientsObj = matchingRecipe.ingredients.map(ingredient => {
       const ingredientList = {};
@@ -167,12 +167,6 @@ let domUpdates = {
     `)
     });
   },
-
-  // searchRecipes() {
-  //   const matchingHTML = '';
-  //   const searchInput = searchBar.value;
-  //   const matchingRecipes = 
-  // },
 }
 
 export default domUpdates;

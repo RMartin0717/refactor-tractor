@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import Recipe from '../src/recipe.js';
 
-let recipe;
+let recipe, ingredientsData;
 
 describe('Recipe', () => {
   beforeEach(() => {
@@ -36,6 +36,17 @@ describe('Recipe', () => {
       "antipasto",
       "hor d'oeuvre"
     ]);
+
+    ingredientsData = [{
+      "id": 20081,
+      "name": "wheat flour",
+      "estimatedCostInCents": 142
+    },
+    {
+      "id": 18372,
+      "name": "bicarbonate of soda",
+      "estimatedCostInCents": 582
+    }]
   });
 
   it('should be a function', () => {
@@ -109,7 +120,7 @@ describe('Recipe', () => {
 
   it('should list ingredients needed', () => {
       
-    expect(recipe.getIngredientNames()).to.deep.equal([{
+    expect(recipe.getIngredientNames(ingredientsData)).to.deep.equal([{
       "id": 20081,
       "name": "wheat flour",
       "estimatedCostInCents": 142
@@ -131,6 +142,6 @@ describe('Recipe', () => {
 
   it('should calculate the cost of its ingredients', () => {
       
-    expect(recipe.calculateCost()).to.equal(5.04);
+    expect(recipe.calculateCost(ingredientsData)).to.equal(5.04);
   });
 });

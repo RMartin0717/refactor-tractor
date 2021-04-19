@@ -58,9 +58,8 @@ function onStartup(allUsersData, allIngredientsData, allRecipesData) {
   createRandomUser(allUsersData);
   createRecipeRepo(allRecipesData);
   createUserPantry(allIngredientsData);
-  domUpdates.greetUser(user)
-  domUpdates.populateCards(allRecipesData)
-  // addUserIngredients()
+  domUpdates.greetUser(user);
+  domUpdates.populateCards(allRecipesData);
 }
 
 function createDomData (allUsersData, allIngredientsData, allRecipesData) {

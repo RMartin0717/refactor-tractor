@@ -23,12 +23,11 @@ let allUsersData = [];
 let allIngredientsData = [];
 let allRecipesData = [];
 
-
-//want to get working off linked app.js
-
-let favButton = document.querySelector('.view-favorites');
-let homeButton = document.querySelector('.home')
-let cardArea = document.querySelector('.all-cards');
+const favButton = document.querySelector('.view-favorites');
+const homeButton = document.querySelector('.home')
+const cardArea = document.querySelector('.all-cards');
+const userGreet = document.querySelector('.user-name')
+const pantryButton = document.querySelector('#pantry-button')
 
 Promise.all([retrieveUserData, retrieveIngredientsData, retrieveRecipesData])
   .then((data) => {
@@ -44,6 +43,7 @@ let user, pantry, recipeRepo;
 favButton.addEventListener('click', handleFavorites);
 homeButton.addEventListener('click', handleCards);
 cardArea.addEventListener('click', handleCards);
+pantryButton.addEventListener('click', addUserIngredients)
 
 function handleFavorites() {
   domUpdates.getFavorites(user);
@@ -60,8 +60,7 @@ function onStartup(allUsersData, allIngredientsData, allRecipesData) {
   createUserPantry(allIngredientsData);
   domUpdates.greetUser(user)
   domUpdates.populateCards(allRecipesData)
-  console.log(domUpdates.usersDataDOM, domUpdates.ingredientsDataDOM, domUpdates.recipesDataDOM)
-  //do something allIngredientsData
+  // addUserIngredients()
 }
 
 function createDomData (allUsersData, allIngredientsData, allRecipesData) {
@@ -84,4 +83,33 @@ function createUserPantry(allIngredientsData) {
 
 function createRecipeRepo(allRecipesData) {
   recipeRepo = new RecipeRepository(allRecipesData);
+}
+
+function addUserIngredients() {
+  console.log(user.id)
+  console.log(user.pantry[0].ingredient)
+  console.log(user.pantry[0].amount)
+  let newData = {"userID": user.id, "ingredientID": user.pantry[0].ingredient, "ingredientModification": user.pantry[0].amount + 5 };
+  console.log(user.pantry[0].amount, '2')
+  fetch(userURL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newData),
+  })
+    .then(response => userIngredientError(response.status))
+    .catch(error => console.log(error))
+  console.log(user.pantry[0].amount)
+}
+// .then()
+//use userID to update ingredientID by the ingredientModification
+//go to recipe and have it post all the ingredients needed
+//need to grab the userID for each random user to have post run
+
+function userIngredientError(res) {
+  console.log(res)
+  if (res >= 400) {
+    userGreet.innerText = "Request Failed.";
+  }
 }

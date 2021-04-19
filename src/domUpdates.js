@@ -3,6 +3,9 @@ import Recipe from "./recipe";
 const recipeCards = document.querySelector('.all-cards');
 const favButton = document.querySelector('.view-favorites');
 
+
+
+
 let domUpdates = {
   usersDataDOM: null,
   ingredientsDataDOM: null,
@@ -108,13 +111,14 @@ let domUpdates = {
 
 
   displayDirections(event, recipeRepo) {
-    const matchingRecipe = recipeRepo.recipes.find(recipe => {
-      if (recipe.id === parseInt(event.target.id)) {
-        return recipe;
-      }
-      return recipe;
+    let recipeInstances = [];
+    recipeRepo.recipes.forEach(recipe => {
+      recipe = new Recipe(recipe.name, recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.tags);
+      recipeInstances.push(recipe);
     });
 
+    const matchingRecipe = recipeInstances.find(recipe => recipe.id === parseInt(event.target.id));
+    
     let currentRecipe = new Recipe(matchingRecipe.name, matchingRecipe.id, matchingRecipe.image, matchingRecipe.ingredients, matchingRecipe.instructions, matchingRecipe.tags);
     let cost = currentRecipe.calculateCost().toFixed(2);
     let curIngredientNames = currentRecipe.getIngredientNames();
@@ -164,7 +168,13 @@ let domUpdates = {
     ${instruction.instruction}</li>
     `)
     });
-  }
+  },
+
+  // searchRecipes() {
+  //   const matchingHTML = '';
+  //   const searchInput = searchBar.value;
+  //   const matchingRecipes = 
+  // },
 }
 
 export default domUpdates;

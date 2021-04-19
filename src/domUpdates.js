@@ -118,30 +118,28 @@ let domUpdates = {
     });
 
     const matchingRecipe = recipeInstances.find(recipe => recipe.id === parseInt(event.target.id));
+    let cost = matchingRecipe.calculateCost().toFixed(2);
+    let curIngredientNames = matchingRecipe.getIngredientNames();
     
-    let currentRecipe = new Recipe(matchingRecipe.name, matchingRecipe.id, matchingRecipe.image, matchingRecipe.ingredients, matchingRecipe.instructions, matchingRecipe.tags);
-    let cost = currentRecipe.calculateCost().toFixed(2);
-    let curIngredientNames = currentRecipe.getIngredientNames();
-    
-    const ingredientsObj = currentRecipe.ingredients.map(ingredient => {
-      const ingList = {};
+    const ingredientsObj = matchingRecipe.ingredients.map(ingredient => {
+      const ingredientList = {};
       const id = ingredient.id;
       const amount = ingredient.quantity.amount;
       const unit = ingredient.quantity.unit;
       curIngredientNames.forEach(ingredientData => {
         const name = ingredientData.name;
         if (ingredientData.id === id) {
-          ingList.name = name;
-          ingList.amount = amount;
-          ingList.unit = unit;
+          ingredientList.name = name;
+          ingredientList.amount = amount;
+          ingredientList.unit = unit;
         }
-      })
-      return ingList;
+      });
+      return ingredientList;
     });
     
     recipeCards.classList.add('all');
     recipeCards.innerHTML = `
-      <h3>${currentRecipe.name}</h3>
+      <h3>${matchingRecipe.name}</h3>
       <p class='all-recipe-info'>
         <strong>It will cost: </strong><span class='cost recipe-info'>
         ${cost}</span><br><br>
@@ -163,7 +161,7 @@ let domUpdates = {
     </li></ul>
     `)
     });
-    currentRecipe.instructions.forEach(instruction => {
+    matchingRecipe.instructions.forEach(instruction => {
       instructionsSpan.insertAdjacentHTML('beforebegin', `<li>
     ${instruction.instruction}</li>
     `)

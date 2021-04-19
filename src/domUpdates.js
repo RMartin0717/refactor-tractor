@@ -1,3 +1,5 @@
+import Recipe from "./recipe"
+
 const recipeCards = document.querySelector('.all-cards');
 const favButton = document.querySelector('.view-favorites');
 
@@ -47,7 +49,7 @@ let domUpdates = {
       })
     }
   },
-  
+
   populateCards(recipes) {
     recipeCards.innerHTML = '';
     if (recipeCards.classList.contains('all')) {
@@ -113,7 +115,7 @@ let domUpdates = {
     let currentRecipe = new Recipe(matchingRecipe.name, matchingRecipe.id, matchingRecipe.image, matchingRecipe.ingredients, matchingRecipe.instructions, matchingRecipe.tags);
     let cost = currentRecipe.calculateCost().toFixed(2);
     let curIngredientNames = currentRecipe.getIngredientNames();
-    
+
     const ingredientsObj = currentRecipe.ingredients.map(ingredient => {
       const ingList = {};
       const id = ingredient.id;
@@ -129,7 +131,7 @@ let domUpdates = {
       })
       return ingList;
     });
-    
+
     recipeCards.classList.add('all');
     recipeCards.innerHTML = `
       <h3>${currentRecipe.name}</h3>
@@ -148,7 +150,7 @@ let domUpdates = {
     ingredientsObj.forEach(ingredient => {
       ingredientsSpan.insertAdjacentHTML('afterbegin', `
       <ul><li>
-      ${ingredient.amount.toFixed(2)} 
+      ${ingredient.amount.toFixed(2)}
       ${ingredient.unit}
       ${ingredient.name}
     </li></ul>

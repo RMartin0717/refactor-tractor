@@ -1,7 +1,12 @@
+// import ingredientsData from "./data/ingredients";
+import Recipe from "./recipe";
 const recipeCards = document.querySelector('.all-cards');
 const favButton = document.querySelector('.view-favorites');
 
 let domUpdates = {
+  usersDataDOM: null,
+  ingredientsDataDOM: null,
+  recipesDataDOM: null,
 
   greetUser(user) {
     const userName = document.querySelector('.user-name');

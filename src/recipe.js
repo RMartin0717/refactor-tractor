@@ -1,4 +1,4 @@
-import ingredientsData from './data/ingredients'
+import ingredientsData from '../test/recipe-test'
 
 class Recipe {
   constructor(name, id, image, ingredients, instructions, tags) {
@@ -8,10 +8,9 @@ class Recipe {
     this.ingredients = ingredients;
     this.instructions = instructions;
     this.tags = tags;
-    this.ingredientsData = ingredientsData;
   }
 
-  getIngredientNames() {
+  getIngredientNames(ingredientsData) {
     let ingredientNames = [];
     this.ingredients.forEach(ingredient => {
       ingredientsData.find(specificIngredient => {
@@ -23,7 +22,7 @@ class Recipe {
     return ingredientNames;
   }
 
-  calculateCost() {
+  calculateCost(ingredientsData) {
     let costCounter = 0;
     this.ingredients.forEach(ingredient => {
       ingredientsData.find(specificIngredient => {

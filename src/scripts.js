@@ -35,7 +35,8 @@ Promise.all([retrieveUserData, retrieveIngredientsData, retrieveRecipesData])
     allUsersData = data[0]
     allIngredientsData = data[1];
     allRecipesData = data[2]
-    onStartup(allUsersData, allIngredientsData, allRecipesData);
+    createDomData (allUsersData, allIngredientsData, allRecipesData)
+    onStartup(domUpdates.usersDataDOM, domUpdates.ingredientsDataDOM, domUpdates.recipesDataDOM);
   })
 
 let user, pantry, recipeRepo;
@@ -59,7 +60,14 @@ function onStartup(allUsersData, allIngredientsData, allRecipesData) {
   createUserPantry(allIngredientsData);
   domUpdates.greetUser(user)
   domUpdates.populateCards(allRecipesData)
+  console.log(domUpdates.usersDataDOM, domUpdates.ingredientsDataDOM, domUpdates.recipesDataDOM)
   //do something allIngredientsData
+}
+
+function createDomData (allUsersData, allIngredientsData, allRecipesData) {
+  domUpdates.usersDataDOM = allUsersData;
+  domUpdates.ingredientsDataDOM = allIngredientsData;
+  domUpdates.recipesDataDOM = allRecipesData;
 }
 
 function createRandomUser(allUsersData) {

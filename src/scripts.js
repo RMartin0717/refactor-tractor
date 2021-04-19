@@ -22,12 +22,11 @@ let allUsersData = [];
 let allIngredientsData = [];
 let allRecipesData = [];
 
-
-//want to get working off linked app.js
-
-let favButton = document.querySelector('.view-favorites');
-let homeButton = document.querySelector('.home')
-let cardArea = document.querySelector('.all-cards');
+const favButton = document.querySelector('.view-favorites');
+const homeButton = document.querySelector('.home')
+const cardArea = document.querySelector('.all-cards');
+const userGreet = document.querySelector('.user-name')
+const pantryButton = document.querySelector('#pantry-button')
 
 Promise.all([retrieveUserData, retrieveIngredientsData, retrieveRecipesData])
   .then((data) => {
@@ -43,6 +42,7 @@ let user, pantry, recipeRepo;
 favButton.addEventListener('click', handleFavorites);
 homeButton.addEventListener('click', handleCards);
 cardArea.addEventListener('click', handleCards);
+pantryButton.addEventListener('click', addUserIngredients)
 
 function handleFavorites() {
   domUpdates.getFavorites(user);
@@ -57,10 +57,8 @@ function onStartup(allUsersData, allIngredientsData, allRecipesData) {
   createRandomUser(allUsersData);
   createRecipeRepo(allRecipesData);
   createUserPantry(allIngredientsData);
-  domUpdates.greetUser(user)
-  domUpdates.populateCards(allRecipesData)
-  console.log(domUpdates.usersDataDOM, domUpdates.ingredientsDataDOM, domUpdates.recipesDataDOM)
-  //do something allIngredientsData
+  domUpdates.greetUser(user);
+  domUpdates.populateCards(allRecipesData);
 }
 
 function createDomData (allUsersData, allIngredientsData, allRecipesData) {

@@ -2,6 +2,9 @@
 import Recipe from "./recipe";
 const recipeCards = document.querySelector('.all-cards');
 const favButton = document.querySelector('.view-favorites');
+let searchBar = document.querySelector('.search-bar');
+
+
 
 let domUpdates = {
   usersDataDOM: null,
@@ -99,7 +102,7 @@ let domUpdates = {
     if (event.target.classList.contains('favorite')) {
       this.favoriteCard(event, recipeRepo, user);
     } else if (event.target.classList.contains('card-picture')) {
-      this.displayDirections(event, recipeRepo);
+      this.displayDirections(event, recipeRepo, this.ingredientsDataDOM);
     } else if (event.target.classList.contains('home')) {
       favButton.innerHTML = 'View Favorites';
       this.populateCards(recipeRepo.recipes);
@@ -107,37 +110,45 @@ let domUpdates = {
   },
 
 
-  displayDirections(event, recipeRepo) {
-    const matchingRecipe = recipeRepo.recipes.find(recipe => {
-      if (recipe.id === parseInt(event.target.id)) {
-        return recipe;
-      }
-      return recipe;
+  displayDirections(event, recipeRepo, ingredientsDataDOM) {
+    let recipeInstances = [];
+    recipeRepo.recipes.forEach(recipe => {
+      recipe = new Recipe(recipe.name, recipe.id, recipe.image, recipe.ingredients, recipe.instructions, recipe.tags);
+      recipeInstances.push(recipe);
     });
 
+<<<<<<< HEAD
     let currentRecipe = new Recipe(matchingRecipe.name, matchingRecipe.id, matchingRecipe.image, matchingRecipe.ingredients, matchingRecipe.instructions, matchingRecipe.tags);
     let cost = currentRecipe.calculateCost().toFixed(2);
     let curIngredientNames = currentRecipe.getIngredientNames();
 
     const ingredientsObj = currentRecipe.ingredients.map(ingredient => {
       const ingList = {};
+=======
+    const matchingRecipe = recipeInstances.find(recipe => recipe.id === parseInt(event.target.id));
+    let cost = matchingRecipe.calculateCost(ingredientsDataDOM).toFixed(2);
+    let curIngredientNames = matchingRecipe.getIngredientNames(ingredientsDataDOM);
+    
+    const ingredientsObj = matchingRecipe.ingredients.map(ingredient => {
+      const ingredientList = {};
+>>>>>>> main
       const id = ingredient.id;
       const amount = ingredient.quantity.amount;
       const unit = ingredient.quantity.unit;
       curIngredientNames.forEach(ingredientData => {
         const name = ingredientData.name;
         if (ingredientData.id === id) {
-          ingList.name = name;
-          ingList.amount = amount;
-          ingList.unit = unit;
+          ingredientList.name = name;
+          ingredientList.amount = amount;
+          ingredientList.unit = unit;
         }
-      })
-      return ingList;
+      });
+      return ingredientList;
     });
 
     recipeCards.classList.add('all');
     recipeCards.innerHTML = `
-      <h3>${currentRecipe.name}</h3>
+      <h3>${matchingRecipe.name}</h3>
       <p class='all-recipe-info'>
         <strong>It will cost: </strong><span class='cost recipe-info'>
         ${cost}</span><br><br>
@@ -159,12 +170,12 @@ let domUpdates = {
     </li></ul>
     `)
     });
-    currentRecipe.instructions.forEach(instruction => {
+    matchingRecipe.instructions.forEach(instruction => {
       instructionsSpan.insertAdjacentHTML('beforebegin', `<li>
     ${instruction.instruction}</li>
     `)
     });
-  }
+  },
 }
 
 export default domUpdates;

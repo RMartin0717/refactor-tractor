@@ -1,7 +1,7 @@
 /* ***** Header ***** */
 .main-header {
   background-color: $banner-background;
-  border: 2px solid #000;
+  border: $border-medium;
   display: flex;
   height: auto;
   justify-content: space-between;
@@ -45,7 +45,7 @@
 /* ***** Cards ***** */
 .card {
   background-color: #D7F2FE;
-  border: 3px solid #000;
+  border: $border-thick;
   width: 100%;
 }
 
@@ -80,19 +80,6 @@
   width: 13%;
 }
 
-.recipe-name {
-  display: block;
-  font-size: 150%;
-  text-align: center;
-}
-
-.card-picture {
-  border: $border-thin;
-  height: 200px;
-  margin: 10px 3% 8px 2.6%;
-  width: 94%;
-}
-
 /* ***** Recipe Display ***** */
 .all-recipe-info,
 ol {
@@ -103,7 +90,7 @@ ol {
 
 /* ***** Active Styling ***** */
 .card-picture:active {
-  border: 2px solid #000;
+  border: $border-medium;
 }
 
 .favorite-active {
@@ -123,7 +110,7 @@ ol {
 .card-button:hover,
 .navButton:hover,
 .search-button:hover {
-  background-color: #cff2da;
+  background-color: #CFF2DA;
 }
 
 .card-picture:hover {

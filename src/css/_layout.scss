@@ -7,6 +7,19 @@
   width: 95.5vw;
 }
 
+.recipe-name {
+  display: block;
+  font-size: 150%;
+  text-align: center;
+}
+
+.card-picture {
+  border: $border-thin;
+  height: 200px;
+  margin: 10px 3% 8px 2.6%;
+  width: 94%;
+}
+
 //recipe display
 .all {
   grid-gap: 0px;

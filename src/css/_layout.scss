@@ -8,14 +8,12 @@ html {
 body {
   margin: auto;
   box-sizing: border-box;
-
   font-family: 'Open Sans', sans-serif;
 }
 
 main {
   height: 100%;
   width: 100%;
-
   background-color: $page-background;
 }
 
@@ -26,7 +24,6 @@ h1 {
   padding-top: 10px;
   border-right: $border-medium;
   width: 30%;
-
   font-size: 255%;
 }
 
@@ -46,15 +43,13 @@ img {
   border: $border-medium;
   width: 100%;
   height: auto;
-
   background-color: $banner-background;
 }
 
 .user-info {
   text-align: center;
   margin: auto;
-  width: 40%
-
+  width: 40%;
   font-size: 180%;
 }
 
@@ -79,12 +74,12 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
-
   border-bottom: $border-thin;
   background-color: $banner-background;
 }
@@ -113,10 +108,52 @@ img {
 }
 
 @media only screen and (max-width: 700px) {
-.all-cards {
-  display: flex;
-  flex-direction: column;
-}
+  html {
+    width: 100vw;
+  }
 
+  main {
+    margin-top: 5vw;
+    display: flex;
+    justify-content: center;
+  }
 
+  h1 {
+    border-right: none;
+  }
+
+  .main-header {
+    display: grid;
+    grid-template-columns: repeat(1fr, 1fr);
+    grid-template-rows: auto;
+
+    border: $border-medium;
+    width: 100%;
+    height: auto;
+    background-color: $banner-background;
+  }
+  //
+  // .user-info {
+  //   grid-area: 1/2/3/3
+  // }
+
+  .nav-buttons {
+    grid-area: 2/1/3/3
+  }
+
+  .all-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .card {
+    width: 90vw;
+    height: 85vw;
+  }
+
+  .card-picture {
+    width: 85vw;
+  }
 }

@@ -84,11 +84,7 @@ function createRecipeRepo(allRecipesData) {
 }
 
 function addUserIngredients() {
-  console.log(user.id)
-  console.log(user.pantry[0].ingredient)
-  console.log(user.pantry[0].amount)
   let newData = {"userID": user.id, "ingredientID": user.pantry[0].ingredient, "ingredientModification": 5 };
-  console.log(user.pantry[0].amount, '2')
   fetch(userURL, {
     method: 'POST',
     headers: {
@@ -97,12 +93,12 @@ function addUserIngredients() {
     body: JSON.stringify(newData),
   })
     .then(response => userIngredientError(response.status))
-    .catch(error => console.log(error))
-  console.log(user.pantry[0].amount)
+    .catch(error => {
+      userIngredientError(error)
+    })
 }
 
 function userIngredientError(res) {
-  console.log(res)
   if (res >= 400) {
     userGreet.innerText = "Request Failed.";
   }

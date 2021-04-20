@@ -1,105 +1,81 @@
-# Webpack Starter Kit
+# Refactor Tractor
 
-## Clone This Repo
+## Table of Contents
+* [Description](#description)
+* [Installation](#installation)
+* [Walkthrough](#walkthrough)
+* [Authors](#authors)
+* [Technologies](#technologies)
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
+## Description
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+Objectives of this project included building on top of someone else's codebase, making network requests to API endpoints, refactor pre-existing code, ensure the app followed best practices for accessibility, leverage  sass to DRY up css, and incorporate Webpack to streamline your workflow process.
 
-Now try to commit something and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+Over the course of one week, given numerous tasks with the objective of making a website with a lot of missing functionality into a useable page, we worked to prioritize most important tasks in order to produce the best possible minimum viable product that we could given our timeframe. We chose to focus most heavily on creating a robust testing suite with working class methods and to add as much functionality to the DOM as we could while learning how to manipulate the DOM from a separate DOM updates object using network requests, which we were all new to.
 
-## Setup
+Some wins included the power of teamwork in overcoming codebase bugs that required all of our combined minds to solve. We were excited to learn about sass, accessibility, network requests, and using a separate DOM updates file.
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo. 
+Challenges included emotionally letting go of wanting to pull together the perfect project. It was a very helpful learning experience to learn to prioritize tasks around tight deadlines. The asynchronous timing of fetched data was a learning curve that took some time as a group to navigate, but we were able to learn a lot together about it and how to implement it in our DOM updates file. We successfully implemented 3 GET requests and 1 POST request (which is very hard-coded, but does work. It provides the necessary service of adding 5 to whatever the first ingredient is in a user pantry).
 
-Then install the library dependencies. Run:
+### Notable features
+* Utilizes fetched data instead of local data
+* Uses sass for organized and DRY webpage styling
+* Implements semantic HTML for a tab-able user experience and for seamless use by use of a screen reader
+* Test Driven Development
+* Responsive Design for a pleasant experience on a a variety of differently-sized devices.
 
-```bash
-npm install
-```
+### Deploy Link
+Because the page is missing important user functionality, we chose not to create a deploy link yet. We recommend following the following instructions for installation.
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with some `h1` text and a pink background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
 
-## Where to Add Your Code
+## Installation
+1. In another terminal tab, clone down the repository at https://github.com/turingschool-examples/whats-cookin-api
+2. Run npm install
+3. Run npm start
+4. Clone down this repository (https://github.com/RMartin0717/refactor-tractor) to your machine
+5. Access cloned directory
+6. Run npm install
+7. Run npm start and visit localhost:8080
 
-### JavaScript
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
+## Walkthrough
+On load for the page, there is a nav bar at the top of the screen which greets the user (you are given your secret spy name--it is randomly selected for you. This is your identity now). There are three buttons in the nav bar. The first button doesn't appear to the user to be helpful, but it is secretly adding 5 of the first ingredient to your pantry in the API using a POST request. There is a button to display favorites, which are stored after you select your favorite recipes using the star button on the top of any recipe card. You  may also hit the home button to return to the main recipe page. On each recipe card, you can click on the image to see what ingredients are needed to make the recipe and instructions for cooking it.
 
-**Create all of your feature code files in the `src` directory.**
+Desktop
+![WhatsCookinDesktop](https://user-images.githubusercontent.com/71860165/115471340-0b164380-a1f5-11eb-83d7-82ae6b082180.gif)
 
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
+iPad
+![WhatsCookinTabel](https://user-images.githubusercontent.com/71860165/115471358-11a4bb00-a1f5-11eb-86bb-97a81de8f2e4.gif)
 
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
+Mobile
+![WhatsCookingMobile](https://user-images.githubusercontent.com/71860165/115471451-3dc03c00-a1f5-11eb-88a3-ec5e94a61e7d.gif)
 
-### HTML
 
-Add the HTML you need in the `index.html` file in the `./src` directory. There is some boilerplate HTML that exists from the start that you can modify.
 
-### CSS (SCSS/SASS)
+## Authors
+<table>
+    <tr>
+        <td> Michann Stoner <a href="https://github.com/michannstoner">GH</td>
+        <td> Riley Martin <a href="https://github.com/RMartin0717">GH</td>
+        <td> Bryan Hohn <a href="https://github.com/bhohnco">GH</td>
+    </tr>
+    </tr>
+        <td><img src="https://avatars.githubusercontent.com/u/74980483?s=400&u=666d5f139d0c221d8555a16e7f1b99069b6b9b0b&v=4" alt="M. Stoner" width="125" height="auto" /></td>
+        <td><img src="https://avatars.githubusercontent.com/u/76501236?s=460&u=56de3268b98bd73447d785601176518e3cd0141c&v=4" alt="R. Martin" width="125" height="auto" /></td>
+        <td><img src="https://avatars.githubusercontent.com/u/75702270?s=460&u=421bb225c458388a212f290378351ab7e30e5e10&v=4" alt="B. Hohn" width="125" height="auto" /></td>
+    </tr>
+</table>
 
-This project is setup to use SCSS/SASS files by default instead of your regular CSS files. Add your SCSS files in the `src/css` directory. There is a `base.scss` file already there, but you can change this file and add multiple SCSS files in this directory.
-
-This might sound weird, but you need to `import` your SCSS files in the JavaScript entry file (`index.js`) for the styles to be applied to your HTML. The example `base.scss` file has already been imported in the JavaScript entry file as an example.
-
-### Images
-
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`index.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
-
-## How to View Your Code in Action
-
-In the terminal, run:
-
-```bash
-npm start
-```
-
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
-
-```bash
-Project is running at http://localhost:8080/
-```
-
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
-
----
-
-## Test Files Organization
-
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
----
-
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory. 
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
-
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
-
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
-
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+## Technologies
+<table>
+    <tr>
+        <td>Functionality</td>
+        <td>Structure</td>
+        <td>Styling</td>
+    </tr>
+    </tr>
+        <td><img src="./images/js-icon.png" alt="javascript" width="100" height="auto" /></td>
+        <td><img src="./images/html-logo.png" alt="html" width="100" height="auto" /></td>
+        <td><img src="./images/css-logo.png" alt="css" width="100" height="auto" /></td>
+    </tr>
+</table>

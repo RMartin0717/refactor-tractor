@@ -100,10 +100,6 @@ function addUserIngredients() {
     .catch(error => console.log(error))
   console.log(user.pantry[0].amount)
 }
-// .then()
-//use userID to update ingredientID by the ingredientModification
-//go to recipe and have it post all the ingredients needed
-//need to grab the userID for each random user to have post run
 
 function userIngredientError(res) {
   console.log(res)

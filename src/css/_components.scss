@@ -1,20 +1,3 @@
-/* ***** Header ***** */
-.main-header {
-  background-color: $banner-background;
-  border: $border-medium;
-  display: flex;
-  height: auto;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.user-info {
-  font-size: 180%;
-  margin: auto;
-  text-align: center;
-  width: 40%
-}
-
 /* ***** Nav Bar ***** */
 .navButton {
   background-color: $banner-background;
@@ -47,13 +30,6 @@
   background-color: #D7F2FE;
   border: $border-thick;
   width: 100%;
-}
-
-.card-header {
-  background-color: $banner-background;
-  border-bottom: $border-thin;
-  display: flex;
-  justify-content: space-between;
 }
 
 .card-button {

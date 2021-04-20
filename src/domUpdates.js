@@ -1,4 +1,3 @@
-// import ingredientsData from "./data/ingredients";
 import Recipe from "./recipe";
 const recipeCards = document.querySelector('.all-cards');
 const favButton = document.querySelector('.view-favorites');

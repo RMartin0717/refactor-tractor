@@ -1,4 +1,72 @@
+/* ***** Elements ***** */
+html {
+  height: 100vh;
+  background-color: $page-background;
+  border: $border-medium;
+}
 
+body {
+  margin: auto;
+  box-sizing: border-box;
+
+  font-family: 'Open Sans', sans-serif;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+
+  background-color: $page-background;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 10px;
+  border-right: $border-medium;
+  width: 30%;
+
+  font-size: 255%;
+}
+
+h3 {
+  color: $banner-background;
+  font-size: 250%;
+}
+
+img {
+  cursor: pointer;
+}
+
+/* ***** Header ***** */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  border: $border-medium;
+  width: 100%;
+  height: auto;
+
+  background-color: $banner-background;
+}
+
+.user-info {
+  text-align: center;
+  margin: auto;
+  width: 40%
+
+  font-size: 180%;
+}
+
+/* ***** Search Bar ***** */
+.search-bar {
+  display: flex;
+  margin: 10px 0px 10px 0px;
+  width: 30%;
+  height: 100%;
+}
+
+/* ***** Cards ***** */
 .all-cards {
   display: grid;
   grid-gap: 30px;
@@ -7,28 +75,48 @@
   width: 95.5vw;
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+
+  border-bottom: $border-thin;
+  background-color: $banner-background;
+}
+
 .recipe-name {
   display: block;
-  font-size: 150%;
   text-align: center;
+  font-size: 150%;
 }
 
 .card-picture {
-  border: $border-thin;
-  height: 200px;
   margin: 10px 3% 8px 2.6%;
-  width: 94%;
+  border: $border-thin;
+  width: 21vw;
 }
 
-//recipe display
+/* ***** Recipe Display ***** */
 .all {
   grid-gap: 0px;
   grid-template-columns: repeat(1, 1fr);
 }
 
-.search-bar {
+/* ***** Hide Class ***** */
+.hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 700px) {
+.all-cards {
   display: flex;
-  height: 100%;
-  margin: 10px 0px 10px 0px;
-  width: 30%;
+  flex-direction: column;
+}
+
+
 }

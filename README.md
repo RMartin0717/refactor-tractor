@@ -42,12 +42,15 @@ Because the page is missing important user functionality, we chose not to create
 On load for the page, there is a nav bar at the top of the screen which greets the user (you are given your secret spy name--it is randomly selected for you. This is your identity now). There are three buttons in the nav bar. The first button doesn't appear to the user to be helpful, but it is secretly adding 5 of the first ingredient to your pantry in the API using a POST request. There is a button to display favorites, which are stored after you select your favorite recipes using the star button on the top of any recipe card. You  may also hit the home button to return to the main recipe page. On each recipe card, you can click on the image to see what ingredients are needed to make the recipe and instructions for cooking it.
 
 Desktop
+
 ![WhatsCookinDesktop](https://user-images.githubusercontent.com/71860165/115471340-0b164380-a1f5-11eb-83d7-82ae6b082180.gif)
 
 iPad
+
 ![WhatsCookinTabel](https://user-images.githubusercontent.com/71860165/115471358-11a4bb00-a1f5-11eb-86bb-97a81de8f2e4.gif)
 
 Mobile
+
 ![WhatsCookingMobile](https://user-images.githubusercontent.com/71860165/115471451-3dc03c00-a1f5-11eb-88a3-ec5e94a61e7d.gif)
 
 

@@ -32,16 +32,10 @@
   width: 100%;
 }
 
-.card-button {
-  border: $border-thin;
-  height: 27px;
-  margin: 3px;
-}
-
 .add-button {
   background-color: $banner-background;
   display: flex;
-  width: 12%;
+  width: 15%;
 }
 
 .add {
@@ -53,7 +47,7 @@
   background-image: url(https://image.flaticon.com/icons/svg/149/149222.svg);
   background-repeat: no-repeat;
   background-position: center;
-  width: 13%;
+  width: 15%;
 }
 
 /* ***** Recipe Display ***** */

@@ -75,11 +75,7 @@ img {
 
 /* ***** Cards ***** */
 .all-cards {
-  display: grid;
-  grid-gap: 30px;
-  grid-template-columns: repeat(4, 1fr);
-  padding: 1.5vw 0 1.5vw 1.5vw;
-  width: 95.5vw;
+  @include grid-display(4);
 }
 
 .card {
@@ -120,39 +116,32 @@ img {
   display: none;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 800px) {
   .all-cards {
-    display: grid;
-    grid-gap: 25px;
-    grid-template-columns: repeat(3, 1fr);
-    margin-top: 2vh;
-    width: 95.5vw;
+    @include grid-display(3);
   }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 600px) {
   .all-cards {
-    display: grid;
-    grid-gap: 25px;
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 2vh;
-    width: 95.5vw;
+    @include grid-display(2);
   }
-  
+
   .card-picture {
     width: 40vw;
   }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 450px) {
   html {
     width: 100vw;
   }
 
   main {
-    margin-top: 5vw;
     display: flex;
     justify-content: center;
+    margin-top: 5vw;
+    margin-left: 2vw;
   }
 
   h1 {

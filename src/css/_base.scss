@@ -4,3 +4,11 @@ $page-background: #37515C;
 $border-thin: 1px solid #000;
 $border-medium: 2px solid #000;
 $border-thick: 3px solid #000;
+
+@mixin grid-display($num-column) {
+  display: grid;
+  grid-gap: 25px;
+  grid-template-columns: repeat($num-column, 1fr);
+  margin-top: 2vh;
+  width: 95.5vw;
+}

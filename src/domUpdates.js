@@ -1,4 +1,3 @@
-// import ingredientsData from "./data/ingredients";
 import Recipe from "./recipe";
 const recipeCards = document.querySelector('.all-cards');
 const favButton = document.querySelector('.view-favorites');
@@ -55,7 +54,7 @@ let domUpdates = {
       })
     }
   },
-  
+
   populateCards(recipes) {
     recipeCards.innerHTML = '';
     if (recipeCards.classList.contains('all')) {
@@ -120,7 +119,7 @@ let domUpdates = {
     const matchingRecipe = recipeInstances.find(recipe => recipe.id === parseInt(event.target.id));
     let cost = matchingRecipe.calculateCost(ingredientsDataDOM).toFixed(2);
     let curIngredientNames = matchingRecipe.getIngredientNames(ingredientsDataDOM);
-    
+
     const ingredientsObj = matchingRecipe.ingredients.map(ingredient => {
       const ingredientList = {};
       const id = ingredient.id;
@@ -136,7 +135,7 @@ let domUpdates = {
       });
       return ingredientList;
     });
-    
+
     recipeCards.classList.add('all');
     recipeCards.innerHTML = `
       <h3>${matchingRecipe.name}</h3>
@@ -155,7 +154,7 @@ let domUpdates = {
     ingredientsObj.forEach(ingredient => {
       ingredientsSpan.insertAdjacentHTML('afterbegin', `
       <ul><li>
-      ${ingredient.amount.toFixed(2)} 
+      ${ingredient.amount.toFixed(2)}
       ${ingredient.unit}
       ${ingredient.name}
     </li></ul>

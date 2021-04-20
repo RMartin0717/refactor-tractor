@@ -1,4 +1,3 @@
-import './css/base.scss';
 import './css/styles.scss';
 import domUpdates from './domUpdates';
 import Pantry from './pantry';
@@ -88,7 +87,7 @@ function addUserIngredients() {
   console.log(user.id)
   console.log(user.pantry[0].ingredient)
   console.log(user.pantry[0].amount)
-  let newData = {"userID": user.id, "ingredientID": user.pantry[0].ingredient, "ingredientModification": user.pantry[0].amount + 5 };
+  let newData = {"userID": user.id, "ingredientID": user.pantry[0].ingredient, "ingredientModification": 5 };
   console.log(user.pantry[0].amount, '2')
   fetch(userURL, {
     method: 'POST',
@@ -101,10 +100,6 @@ function addUserIngredients() {
     .catch(error => console.log(error))
   console.log(user.pantry[0].amount)
 }
-// .then()
-//use userID to update ingredientID by the ingredientModification
-//go to recipe and have it post all the ingredients needed
-//need to grab the userID for each random user to have post run
 
 function userIngredientError(res) {
   console.log(res)

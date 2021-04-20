@@ -257,7 +257,7 @@ describe('Recipe Repository', () => {
   });
 
   it('should hold recipe data', () => {
-    
+
     expect(recipeRepository.recipes).to.equal(recipeTestData);
   });
 
@@ -267,12 +267,12 @@ describe('Recipe Repository', () => {
   })
 
   it('should be able to filter through recipes by ingredients', () => {
-    
+
     expect(recipeRepository.findRecipe('garlic')).to.deep.equal([recipeTestData[1]]);
   });
 
   it('Should be able to filter recipes by name', () => {
-      
+
     expect(recipeRepository.findRecipe('Loaded Chocolate Chip Pudding Cookie Cups')).to.deep.equal([recipeTestData[0]]);
   });
 });

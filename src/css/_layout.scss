@@ -1,0 +1,182 @@
+/* ***** Elements ***** */
+html {
+  height: 100vh;
+  background-color: $page-background;
+  border: $border-medium;
+}
+
+body {
+  margin: auto;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+main {
+  margin-left: 1vw;
+  margin-right: 1vw;
+  height: 100%;
+  width: 100%;
+  background-color: $page-background;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 10px;
+  border-right: $border-medium;
+  width: 30%;
+  font-size: 255%;
+}
+
+h3 {
+  color: $banner-background;
+  font-size: 250%;
+}
+
+img {
+  cursor: pointer;
+}
+
+/* ***** Header ***** */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: $border-medium;
+  width: 100%;
+  height: auto;
+  background-color: $banner-background;
+}
+
+.user-info {
+  text-align: center;
+  margin: auto;
+  width: 40%;
+  font-size: 180%;
+}
+
+.nav-buttons {
+  display: grid;
+  width: 40vw;
+
+}
+
+/* ***** Search Bar ***** */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0px 10px 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.search-input {
+  height: 70%;
+}
+
+/* ***** Cards ***** */
+.all-cards {
+  @include grid-display(4);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: $border-thin;
+  background-color: $banner-background;
+}
+
+.recipe-name {
+  display: block;
+  text-align: center;
+  font-size: 150%;
+}
+
+.card-picture {
+  margin: 10px 3% 8px 2.6%;
+  border: $border-thin;
+  width: 21vw;
+}
+
+/* ***** Recipe Display ***** */
+.all {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+}
+
+/* ***** Hide Class ***** */
+.hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .all-cards {
+    @include grid-display(3);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .all-cards {
+    @include grid-display(2);
+  }
+
+  .card-picture {
+    width: 40vw;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  html {
+    width: 100vw;
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vw;
+    margin-left: 2vw;
+  }
+
+  h1 {
+    width: 100%;
+    border-right: none;
+  }
+
+  .main-header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user-info {
+    width: 100%;
+  }
+
+  .nav-buttons {
+    width: 100%;
+  }
+
+  .all-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .card {
+    width: 90vw;
+    height: 85vw;
+  }
+
+  .card-picture {
+    width: 85vw;
+  }
+}

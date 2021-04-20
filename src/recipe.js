@@ -1,5 +1,3 @@
-import ingredientsData from '../test/recipe-test'
-
 class Recipe {
   constructor(name, id, image, ingredients, instructions, tags) {
     this.name = name;

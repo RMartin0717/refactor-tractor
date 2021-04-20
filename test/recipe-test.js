@@ -1,7 +1,8 @@
 import { expect } from 'chai';
 import Recipe from '../src/recipe.js';
 
-let recipe, ingredientsData;
+
+let recipe, ingredientsData
 
 describe('Recipe', () => {
   beforeEach(() => {
@@ -50,32 +51,32 @@ describe('Recipe', () => {
   });
 
   it('should be a function', () => {
-    
+
     expect(Recipe).to.be.a('function');
   });
 
   it('should be an instance of Recipe', () => {
-    
+
     expect(recipe).to.be.an.instanceOf(Recipe);
   });
 
   it('should have a name', () => {
-    
+
     expect(recipe.name).to.equal('Loaded Chocolate Chip Pudding Cookie Cups');
   });
 
   it('should have an id', () => {
-    
+
     expect(recipe.id).to.equal(595736);
   });
 
   it('should have an image', () => {
-    
+
     expect(recipe.image).to.equal('https://spoonacular.com/recipeImages/595736-556x370.jpg')
   });
 
   it('should hold an array of ingredients', () => {
-    
+
     expect(recipe.ingredients).to.deep.equal([
       {
         "id": 20081,
@@ -94,7 +95,7 @@ describe('Recipe', () => {
   });
 
   it('should have an array of instructions', () => {
-      
+
     expect(recipe.instructions).to.deep.equal([
       {
         "instruction": "In a large mixing bowl, whisk together the dry ingredients (flour, pudding mix, soda and salt). Set aside.In a large mixing bowl of a stand mixer, cream butter for 30 seconds. Gradually add granulated sugar and brown sugar and cream until light and fluffy.",
@@ -107,7 +108,7 @@ describe('Recipe', () => {
   });
 
   it('should have tags', () => {
-    
+
     expect(recipe.tags).to.deep.equal([
       "antipasti",
       "starter",
@@ -119,7 +120,7 @@ describe('Recipe', () => {
   });
 
   it('should list ingredients needed', () => {
-      
+
     expect(recipe.getIngredientNames(ingredientsData)).to.deep.equal([{
       "id": 20081,
       "name": "wheat flour",
@@ -133,7 +134,7 @@ describe('Recipe', () => {
   });
 
   it('should return recipe instructions', () => {
-      
+
     expect(recipe.getInstructions()).to.deep.equal([
       "In a large mixing bowl, whisk together the dry ingredients (flour, pudding mix, soda and salt). Set aside.In a large mixing bowl of a stand mixer, cream butter for 30 seconds. Gradually add granulated sugar and brown sugar and cream until light and fluffy.",
       "Add egg and vanilla and mix until combined."
@@ -141,7 +142,7 @@ describe('Recipe', () => {
   });
 
   it('should calculate the cost of its ingredients', () => {
-      
+
     expect(recipe.calculateCost(ingredientsData)).to.equal(5.04);
   });
 });

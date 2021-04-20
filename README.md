@@ -60,9 +60,9 @@ Mobile
         <td> Bryan Hohn <a href="https://github.com/bhohnco">GH</td>
     </tr>
     </tr>
-        <td><img src="https://avatars.githubusercontent.com/u/74980483?s=400&u=666d5f139d0c221d8555a16e7f1b99069b6b9b0b&v=4" alt="M. Stoner" width="125" height="auto" /></td>
+        <td><img src="https://avatars.githubusercontent.com/u/76269802?v=4" alt="M. Stoner" width="125" height="auto" /></td>
         <td><img src="https://avatars.githubusercontent.com/u/76501236?s=460&u=56de3268b98bd73447d785601176518e3cd0141c&v=4" alt="R. Martin" width="125" height="auto" /></td>
-        <td><img src="https://avatars.githubusercontent.com/u/75702270?s=460&u=421bb225c458388a212f290378351ab7e30e5e10&v=4" alt="B. Hohn" width="125" height="auto" /></td>
+        <td><img src="https://avatars.githubusercontent.com/u/71860165?v=4" alt="B. Hohn" width="125" height="auto" /></td>
     </tr>
 </table>
 
@@ -74,8 +74,8 @@ Mobile
         <td>Styling</td>
     </tr>
     </tr>
-        <td><img src="./images/js-icon.png" alt="javascript" width="100" height="auto" /></td>
-        <td><img src="./images/html-logo.png" alt="html" width="100" height="auto" /></td>
-        <td><img src="./images/css-logo.png" alt="css" width="100" height="auto" /></td>
+        <td><img src="./src/images/js-icon.png" alt="javascript" width="100" height="auto" /></td>
+        <td><img src="./src/images/html-logo.png" alt="html" width="100" height="auto" /></td>
+        <td><img src="./src/images/css-logo.png" alt="css" width="100" height="auto" /></td>
     </tr>
 </table>
